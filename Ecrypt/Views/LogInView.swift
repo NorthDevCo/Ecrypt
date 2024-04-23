@@ -11,6 +11,8 @@ struct LogInView: View {
     
     @EnvironmentObject private var appState: AppState
     @State private var password = ""
+    @State private var overButton: Bool = false
+    @State private var overText: Bool = false
     
     var body: some View {
         VStack {
@@ -23,7 +25,7 @@ struct LogInView: View {
                     
                 VStack {
                     Text("Ecrypt")
-                        .font(.largeTitle)
+                        .font(.system(size: 35, weight: .bold))
                         
                     VStack (alignment: .leading){
                         Text("Password")
@@ -53,6 +55,12 @@ struct LogInView: View {
                                         Image(systemName: "touchid")
                                             .foregroundStyle(.red)
                                             .font(.system(size: 25, weight: .bold))
+                                            .background(RoundedRectangle(cornerRadius: 10)
+                                                .frame(width: 40, height: 35)
+                                                .foregroundStyle(overButton ? .gray .opacity(0.5) : .clear))
+                                            .onHover(perform: { over in
+                                                overButton = over
+                                            })
                                     }).buttonStyle(.borderless)
                                     .padding(.trailing, 10)
                                 } else {
@@ -62,6 +70,12 @@ struct LogInView: View {
                                         Image(systemName: "arrow.forward")
                                             .foregroundStyle(.blue)
                                             .font(.system(size: 25, weight: .bold))
+                                            .background(RoundedRectangle(cornerRadius: 10)
+                                                .frame(width: 40, height: 35)
+                                                .foregroundStyle(overButton ? .gray .opacity(0.5) : .clear))
+                                            .onHover(perform: { over in
+                                                overButton = over
+                                            })
                                     }).buttonStyle(.borderless)
                                         .padding(.leading, 2.5)
                                         .padding(.trailing, 10)
@@ -74,8 +88,11 @@ struct LogInView: View {
                         }, label: {
                             HStack (alignment: .center) {
                                 Text("Forgot password?")
+                                    .onHover(perform: { over in
+                                        overText = over
+                                    })
                                     .foregroundStyle(.blue)
-                                    .font(.system(size: 12, weight: .bold))
+                                    .font(.system(size: 12, weight: overText ? .bold : .regular))
                             }
                         })
                         .buttonStyle(.borderless)
@@ -86,7 +103,6 @@ struct LogInView: View {
             }
             .padding()
         }
-        .padding()
     }
 }
 

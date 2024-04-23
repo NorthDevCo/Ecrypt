@@ -12,6 +12,6 @@ struct EcryptApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView().environmentObject(AppState())
-        }
+        }.windowStyle(HiddenTitleBarWindowStyle())
     }
 }
