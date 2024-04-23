@@ -8,18 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		A9FA56F72BD7E312001EDB0D /* EcryptApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FA56F62BD7E312001EDB0D /* EcryptApp.swift */; };
-		A9FA56F92BD7E312001EDB0D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FA56F82BD7E312001EDB0D /* ContentView.swift */; };
 		A9FA56FB2BD7E313001EDB0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9FA56FA2BD7E313001EDB0D /* Assets.xcassets */; };
 		A9FA56FE2BD7E313001EDB0D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9FA56FD2BD7E313001EDB0D /* Preview Assets.xcassets */; };
+		A9FA570A2BD7E359001EDB0D /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FA57052BD7E359001EDB0D /* AppState.swift */; };
+		A9FA570B2BD7E359001EDB0D /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FA57062BD7E359001EDB0D /* InputView.swift */; };
+		A9FA570C2BD7E359001EDB0D /* PasswordAuthenticate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FA57072BD7E359001EDB0D /* PasswordAuthenticate.swift */; };
+		A9FA570D2BD7E359001EDB0D /* TouchIDAuthenticate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FA57082BD7E359001EDB0D /* TouchIDAuthenticate.swift */; };
+		A9FA57132BD7E364001EDB0D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FA570E2BD7E364001EDB0D /* ContentView.swift */; };
+		A9FA57142BD7E364001EDB0D /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FA570F2BD7E364001EDB0D /* LogInView.swift */; };
+		A9FA57152BD7E364001EDB0D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FA57102BD7E364001EDB0D /* MainView.swift */; };
+		A9FA57162BD7E364001EDB0D /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FA57112BD7E364001EDB0D /* RegistrationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A9FA56F32BD7E312001EDB0D /* Ecrypt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ecrypt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9FA56F62BD7E312001EDB0D /* EcryptApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcryptApp.swift; sourceTree = "<group>"; };
-		A9FA56F82BD7E312001EDB0D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A9FA56FA2BD7E313001EDB0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A9FA56FD2BD7E313001EDB0D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A9FA56FF2BD7E313001EDB0D /* Ecrypt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ecrypt.entitlements; sourceTree = "<group>"; };
+		A9FA57052BD7E359001EDB0D /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		A9FA57062BD7E359001EDB0D /* InputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		A9FA57072BD7E359001EDB0D /* PasswordAuthenticate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordAuthenticate.swift; sourceTree = "<group>"; };
+		A9FA57082BD7E359001EDB0D /* TouchIDAuthenticate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchIDAuthenticate.swift; sourceTree = "<group>"; };
+		A9FA570E2BD7E364001EDB0D /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A9FA570F2BD7E364001EDB0D /* LogInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
+		A9FA57102BD7E364001EDB0D /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		A9FA57112BD7E364001EDB0D /* RegistrationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +67,8 @@
 			isa = PBXGroup;
 			children = (
 				A9FA56F62BD7E312001EDB0D /* EcryptApp.swift */,
-				A9FA56F82BD7E312001EDB0D /* ContentView.swift */,
+				A9FA57122BD7E364001EDB0D /* Views */,
+				A9FA57092BD7E359001EDB0D /* Functions */,
 				A9FA56FA2BD7E313001EDB0D /* Assets.xcassets */,
 				A9FA56FF2BD7E313001EDB0D /* Ecrypt.entitlements */,
 				A9FA56FC2BD7E313001EDB0D /* Preview Content */,
@@ -67,6 +82,28 @@
 				A9FA56FD2BD7E313001EDB0D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A9FA57092BD7E359001EDB0D /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+				A9FA57052BD7E359001EDB0D /* AppState.swift */,
+				A9FA57062BD7E359001EDB0D /* InputView.swift */,
+				A9FA57072BD7E359001EDB0D /* PasswordAuthenticate.swift */,
+				A9FA57082BD7E359001EDB0D /* TouchIDAuthenticate.swift */,
+			);
+			path = Functions;
+			sourceTree = "<group>";
+		};
+		A9FA57122BD7E364001EDB0D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A9FA570E2BD7E364001EDB0D /* ContentView.swift */,
+				A9FA570F2BD7E364001EDB0D /* LogInView.swift */,
+				A9FA57102BD7E364001EDB0D /* MainView.swift */,
+				A9FA57112BD7E364001EDB0D /* RegistrationView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,8 +176,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9FA56F92BD7E312001EDB0D /* ContentView.swift in Sources */,
+				A9FA570B2BD7E359001EDB0D /* InputView.swift in Sources */,
+				A9FA57152BD7E364001EDB0D /* MainView.swift in Sources */,
+				A9FA57142BD7E364001EDB0D /* LogInView.swift in Sources */,
+				A9FA57162BD7E364001EDB0D /* RegistrationView.swift in Sources */,
+				A9FA570D2BD7E359001EDB0D /* TouchIDAuthenticate.swift in Sources */,
+				A9FA57132BD7E364001EDB0D /* ContentView.swift in Sources */,
 				A9FA56F72BD7E312001EDB0D /* EcryptApp.swift in Sources */,
+				A9FA570A2BD7E359001EDB0D /* AppState.swift in Sources */,
+				A9FA570C2BD7E359001EDB0D /* PasswordAuthenticate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
