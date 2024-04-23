@@ -22,6 +22,8 @@ struct ContentView: View {
                     LogInView()
                 case .RegistrationView:
                     RegistrationView()
+                case .ForgotPasswordView:
+                    ForgotPasswordView()
                 }
             }
         }

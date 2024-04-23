@@ -11,6 +11,7 @@ enum Route {
     case MainView
     case LogInView
     case RegistrationView
+    case ForgotPasswordView
 }
 
 class AppState: ObservableObject {
