@@ -8,8 +8,15 @@
 import SwiftUI
 
 struct ForgotPasswordView: View {
+    
+    @EnvironmentObject private var appState: AppState
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button(action: {
+            appState.pop()
+        }, label: {
+            Text("Back")
+        })
     }
 }
 

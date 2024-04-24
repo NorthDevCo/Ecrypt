@@ -57,7 +57,7 @@ struct LogInView: View {
                                             .font(.system(size: 25, weight: .bold))
                                             .background(RoundedRectangle(cornerRadius: 10)
                                                 .frame(width: 40, height: 35)
-                                                .foregroundStyle(overButton ? .gray .opacity(0.5) : .clear))
+                                                .foregroundStyle(overButton ? .gray .opacity(0.3) : .clear))
                                             .onHover(perform: { over in
                                                 overButton = over
                                             })
@@ -72,7 +72,7 @@ struct LogInView: View {
                                             .font(.system(size: 25, weight: .bold))
                                             .background(RoundedRectangle(cornerRadius: 10)
                                                 .frame(width: 40, height: 35)
-                                                .foregroundStyle(overButton ? .gray .opacity(0.5) : .clear))
+                                                .foregroundStyle(overButton ? .gray .opacity(0.3) : .clear))
                                             .onHover(perform: { over in
                                                 overButton = over
                                             })
