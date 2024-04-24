@@ -12,6 +12,7 @@ struct inputView: View {
     @Binding var text: String
     let placeholder: String
     let title: String
+    let imageName: String
     var isSecureField = false
     var isSignIn = false
     
@@ -21,17 +22,40 @@ struct inputView: View {
                 .fontWeight(.semibold)
                 .font(.footnote)
             
-            if isSecureField == false {
-                SecureField(placeholder, text: $text)
-                    .font(.system(size: 14))
-            } else {
-                TextField(placeholder, text: $text)
-                    .font(.system(size: 14))
+            ZStack (alignment: .leading){
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(.gray, lineWidth: 2)
+                    .frame(width: 400, height: 40)
+                
+                if isSecureField == true {
+                    HStack {
+                        Image(systemName: imageName)
+                            .padding(.horizontal, 10)
+                            .fontWeight(.semibold)
+                            .foregroundStyle(.gray)
+                            .font(.title2)
+                        SecureField(placeholder, text: $text)
+                            .font(.system(size: 14))
+                            .textFieldStyle(.plain)
+                    }
+                } else {
+                    HStack {
+                        Image(systemName: imageName)
+                            .padding(.horizontal, 10)
+                            .fontWeight(.semibold)
+                            .foregroundStyle(.gray)
+                            .font(.title2)
+                        TextField(placeholder, text: $text)
+                            .font(.system(size: 14))
+                            .textFieldStyle(.plain)
+                    }
+                }
+
             }
         }
     }
 }
 
 #Preview {
-    inputView(text: .constant(""), placeholder: "Name@EmailExample.com", title: "Email Address", isSecureField: true)
+    inputView(text: .constant(""), placeholder: "Name@EmailExample.com", title: "Email Address", imageName: "envelope", isSecureField: false)
 }

@@ -25,12 +25,9 @@ struct LogInView: View {
                     
                 VStack {
                     Text("Ecrypt")
-                        .font(.system(size: 35, weight: .bold))
+                        .font(.system(size: 35, weight: .bold, design: Font.Design.serif))
                         
                     VStack (alignment: .leading){
-                        Text("Password")
-                            .fontWeight(.semibold)
-                            .font(.footnote)
                                 
                         ZStack (alignment: .leading){
                             RoundedRectangle(cornerRadius: 8)
@@ -97,7 +94,7 @@ struct LogInView: View {
                         })
                         .buttonStyle(.borderless)
                     }.frame(width: 400, height: 60)
-                    .padding()
+                        .padding(.bottom)
                 }
                 .padding()
             }

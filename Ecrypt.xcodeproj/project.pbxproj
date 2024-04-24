@@ -103,10 +103,18 @@
 				A9FA570E2BD7E364001EDB0D /* ContentView.swift */,
 				A9FA57102BD7E364001EDB0D /* MainView.swift */,
 				A9FA570F2BD7E364001EDB0D /* LogInView.swift */,
-				A9FA57112BD7E364001EDB0D /* RegistrationView.swift */,
+				A9FA571B2BD94C75001EDB0D /* UserSignUp */,
 				A9FA57172BD7E77C001EDB0D /* ForgotPasswordView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		A9FA571B2BD94C75001EDB0D /* UserSignUp */ = {
+			isa = PBXGroup;
+			children = (
+				A9FA57112BD7E364001EDB0D /* RegistrationView.swift */,
+			);
+			path = UserSignUp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
