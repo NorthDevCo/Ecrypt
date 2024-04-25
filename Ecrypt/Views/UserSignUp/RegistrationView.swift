@@ -43,6 +43,10 @@ struct RegistrationView: View {
                     
                     ProgressBar(progress: progress)
                     
+                    Spacer()
+                    
+                    UserSignUpForm(progress: progress)
+                    
                 }
                 .padding()
             }
