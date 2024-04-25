@@ -10,11 +10,22 @@ import SwiftUI
 struct UserSignUpForm: View {
     
     @State var progress: Int = 0
-    @State var password: String = ""
-
+    @State private var password: String = ""
+    @State var secureField: Bool = true
+    @State private var isOn: Bool = false
     
     var body: some View {
-        if progress == 0 {
+        if progress >= 3 {
+            ProgressBar(progress: progress)
+            Text("completed welcome")
+        } else if progress == 2 {
+            ProgressBar(progress: progress)
+            Text("forgot password")
+        } else if progress == 1{
+            ProgressBar(progress: progress)
+            Text("biometrics")
+        } else {
+            ProgressBar(progress: progress)
             VStack (alignment: .leading){
                 Spacer(minLength: 60)
                 HStack {
@@ -29,7 +40,7 @@ struct UserSignUpForm: View {
                     }, label: {
                         Text(secureField == true ? "Show" : "Hide")
                     }).buttonStyle(.borderless)
-                    .padding(.top, 10)
+                        .padding(.top, 10)
                 }
                 HStack {
                     Text("Weak")
@@ -53,39 +64,37 @@ struct UserSignUpForm: View {
                 HStack {
                     Spacer()
                     VStack {
-                        HStack {
-                            Spacer(minLength: 87.5)
-                            Text("Continue")
-                                .font(.title)
-                                .fontWeight(.semibold)
-                                .foregroundStyle(passwordTesting(password) && isOn ? .white : .gray)
-                            Spacer()
-                            Image(systemName: "arrow.forward")
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .foregroundStyle(passwordTesting(password) && isOn ? .white : .gray)
-                        }.onTapGesture {
-                            progress = 1
-                        }
-                        .padding()
-                        .frame(width: 300, height: 50)
-                        .background(RoundedRectangle(cornerRadius: 10).fill(passwordTesting(password) && isOn ? .blue : .clear).stroke(passwordTesting(password) && isOn ? .blue : .gray, lineWidth: 3).frame(width: 300, height: 50))
+                        Button(action: {
+                            if passwordTesting(password) && isOn {
+                                progress = 1
+                            }
+                        }, label: {
+                            HStack {
+                                Spacer(minLength: 87.5)
+                                Text("Continue")
+                                    .font(.title)
+                                    .fontWeight(.semibold)
+                                    .foregroundStyle(passwordTesting(password) && isOn ? .white : .gray)
+                                Spacer()
+                                Image(systemName: "arrow.forward")
+                                    .font(.title)
+                                    .fontWeight(.bold)
+                                    .foregroundStyle(passwordTesting(password) && isOn ? .white : .gray)
+                            }
+                        }).buttonStyle(.borderless)
+                            .padding()
+                            .frame(width: 300, height: 50)
+                            .background(RoundedRectangle(cornerRadius: 10).fill(passwordTesting(password) && isOn ? .blue : .clear).stroke(passwordTesting(password) && isOn ? .blue : .gray, lineWidth: 3).frame(width: 300, height: 50))
                         Spacer()
                         Text("Terms of Service")
                             .onTapGesture {
                                 // make some new window with terms of service
                             }                    }
-                    Spacer(minLength: 60)
+                        Spacer(minLength: 60)
+                    }
                 }
             }
-        } else if progress == 1 {
-            Text("biometrics")
-        } else if progress == 2 {
-            Text("forgot password")
-        } else {
-            Text("completed welcome")
         }
-    }
     
     private func passwordStrength (_ Password: String) -> Int {
         let specials = "!@#$%^&*()_-+={[}]|:;<,>'.?/~`"
@@ -189,5 +198,5 @@ struct UserSignUpForm: View {
 }
 
 #Preview {
-    UserSignUpForm(progress: 0, password: "&6MonkeysRL0oking^")
+    UserSignUpForm(progress: 0)
 }

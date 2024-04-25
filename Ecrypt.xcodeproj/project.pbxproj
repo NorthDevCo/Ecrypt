@@ -20,7 +20,8 @@
 		A9FA57162BD7E364001EDB0D /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FA57112BD7E364001EDB0D /* RegistrationView.swift */; };
 		A9FA57182BD7E77C001EDB0D /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FA57172BD7E77C001EDB0D /* ForgotPasswordView.swift */; };
 		A9FA571D2BD94DA3001EDB0D /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FA571C2BD94DA3001EDB0D /* ProgressBar.swift */; };
-		A9FA571F2BD9FC51001EDB0D /* UserSignUpForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FA571E2BD9FC51001EDB0D /* UserSignUpForm.swift */; };
+		A9FA57212BDA5D31001EDB0D /* PasswordPermutations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FA57202BDA5D30001EDB0D /* PasswordPermutations.swift */; };
+		A9FA57312BDA951F001EDB0D /* UserSignUpForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FA57302BDA951F001EDB0D /* UserSignUpForm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +40,8 @@
 		A9FA57112BD7E364001EDB0D /* RegistrationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		A9FA57172BD7E77C001EDB0D /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		A9FA571C2BD94DA3001EDB0D /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
-		A9FA571E2BD9FC51001EDB0D /* UserSignUpForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSignUpForm.swift; sourceTree = "<group>"; };
+		A9FA57202BDA5D30001EDB0D /* PasswordPermutations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordPermutations.swift; sourceTree = "<group>"; };
+		A9FA57302BDA951F001EDB0D /* UserSignUpForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSignUpForm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,8 +119,9 @@
 			isa = PBXGroup;
 			children = (
 				A9FA57112BD7E364001EDB0D /* RegistrationView.swift */,
+				A9FA57302BDA951F001EDB0D /* UserSignUpForm.swift */,
 				A9FA571C2BD94DA3001EDB0D /* ProgressBar.swift */,
-				A9FA571E2BD9FC51001EDB0D /* UserSignUpForm.swift */,
+				A9FA57202BDA5D30001EDB0D /* PasswordPermutations.swift */,
 			);
 			path = UserSignUp;
 			sourceTree = "<group>";
@@ -200,8 +203,9 @@
 				A9FA57162BD7E364001EDB0D /* RegistrationView.swift in Sources */,
 				A9FA570D2BD7E359001EDB0D /* TouchIDAuthenticate.swift in Sources */,
 				A9FA57132BD7E364001EDB0D /* ContentView.swift in Sources */,
+				A9FA57312BDA951F001EDB0D /* UserSignUpForm.swift in Sources */,
 				A9FA56F72BD7E312001EDB0D /* EcryptApp.swift in Sources */,
-				A9FA571F2BD9FC51001EDB0D /* UserSignUpForm.swift in Sources */,
+				A9FA57212BDA5D31001EDB0D /* PasswordPermutations.swift in Sources */,
 				A9FA570A2BD7E359001EDB0D /* AppState.swift in Sources */,
 				A9FA57182BD7E77C001EDB0D /* ForgotPasswordView.swift in Sources */,
 				A9FA570C2BD7E359001EDB0D /* PasswordAuthenticate.swift in Sources */,

@@ -10,8 +10,6 @@ import SwiftUI
 struct RegistrationView: View {
     
     @EnvironmentObject private var appState: AppState
-    @State private var password: String = ""
-    @State var progress: Int = 0
     
     var body: some View {
         HStack {
@@ -41,16 +39,12 @@ struct RegistrationView: View {
                     
                     Spacer()
                     
-                    ProgressBar(progress: progress)
-                    
-                    Spacer()
-                    
-                    UserSignUpForm(progress: progress)
-                    
+                    UserSignUpForm()
                 }
                 .padding()
             }
-            
+            .padding()
+            .frame(width: 550)
         }
         .padding()
     }

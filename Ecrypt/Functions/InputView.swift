@@ -37,6 +37,7 @@ struct inputView: View {
                         SecureField(placeholder, text: $text)
                             .font(.system(size: 14))
                             .textFieldStyle(.plain)
+                            .frame(width: 340)
                     }
                 } else {
                     HStack {
@@ -48,6 +49,7 @@ struct inputView: View {
                         TextField(placeholder, text: $text)
                             .font(.system(size: 14))
                             .textFieldStyle(.plain)
+                            .frame(width: 340)
                     }
                 }
 
@@ -57,5 +59,5 @@ struct inputView: View {
 }
 
 #Preview {
-    inputView(text: .constant(""), placeholder: "Name@EmailExample.com", title: "Email Address", imageName: "envelope", isSecureField: false)
+    inputView(text: .constant(""), placeholder: "Name@EmailExample.com", title: "Email Address", imageName: "envelope", isSecureField: true)
 }

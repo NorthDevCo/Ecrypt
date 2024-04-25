@@ -9,18 +9,18 @@ import SwiftUI
 
 struct ProgressBar: View {
     
-    @State var progress: Int = 0
+    @State var progress: Int
     
     var body: some View {
         ZStack {
             HStack {
-                Spacer(minLength: 20)
-                RoundedRectangle(cornerRadius: 25.0)
-                    .frame(width: 240, height: 4)
-                    .foregroundStyle(progress >= 1 ? .green : .gray)
                 Spacer(minLength: 30)
                 RoundedRectangle(cornerRadius: 25.0)
-                    .frame(width: 240, height: 4)
+                    .frame(width: 200, height: 3)
+                    .foregroundStyle(progress >= 1 ? .green : .gray)
+                Spacer(minLength: 40)
+                RoundedRectangle(cornerRadius: 25.0)
+                    .frame(width: 200, height: 3)
                     .foregroundStyle(progress >= 2 ? .green : .gray)
                 Spacer(minLength: 30)
             }
@@ -28,21 +28,20 @@ struct ProgressBar: View {
             HStack {
                 ZStack {
                     Circle()
-                        .frame(width: 30, alignment: .center)
+                        .frame(width: 20, alignment: .center)
                         .foregroundStyle(progress >= 1 ? .green : .clear)
                     Circle()
-                        .stroke(lineWidth: 4)
-                        .frame(width: 30, alignment: .center)
+                        .stroke(lineWidth: 2)
+                        .frame(width: 20, alignment: .center)
                         .foregroundStyle(progress >= 0 ? .green : .gray)
                         .overlay(alignment: .center) {
                             if progress >= 1 {
                                 Image(systemName: "checkmark")
                                     .foregroundStyle(.white)
-                                    .font(.title)
                                     .fontWeight(.bold)
                             } else {
                                 Text("1")
-                                    .font(.title)
+                                    .font(.title3)
                             }
                         }
                 }
@@ -50,21 +49,20 @@ struct ProgressBar: View {
                 
                 ZStack {
                     Circle()
-                        .frame(width: 30, alignment: .center)
+                        .frame(width: 20, alignment: .center)
                         .foregroundStyle(progress >= 2 ? .green : .clear)
                     Circle()
-                        .stroke(lineWidth: 4)
-                        .frame(width: 30, alignment: .center)
+                        .stroke(lineWidth: 2)
+                        .frame(width: 20, alignment: .center)
                         .foregroundStyle(progress >= 1 ? .green : .gray)
                         .overlay(alignment: .center) {
                             if progress >= 2 {
                                 Image(systemName: "checkmark")
                                     .foregroundStyle(.white)
-                                    .font(.title)
                                     .fontWeight(.bold)
                             } else {
                                 Text("2")
-                                    .font(.title)
+                                    .font(.title3)
                             }
                         }
                 }
@@ -72,29 +70,29 @@ struct ProgressBar: View {
                 
                 ZStack {
                     Circle()
-                        .frame(width: 30, alignment: .center)
+                        .frame(width: 20, alignment: .center)
                         .foregroundStyle(progress >= 3 ? .green : .clear)
                     Circle()
-                        .stroke(lineWidth: 4)
-                        .frame(width: 30, alignment: .center)
+                        .stroke(lineWidth: 2)
+                        .frame(width: 20, alignment: .center)
                         .foregroundStyle(progress >= 2 ? .green : .gray)
                         .overlay(alignment: .center) {
                             if progress >= 3 {
                                 Image(systemName: "checkmark")
                                     .foregroundStyle(.white)
-                                    .font(.title)
                                     .fontWeight(.bold)
                             } else {
                                 Text("3")
-                                    .font(.title)
+                                    .font(.title3)
                             }
                         }
                 }
             }
         }
+        .frame(width: 500)
     }
 }
 
 #Preview {
-    ProgressBar(progress: 0)
+    ProgressBar(progress: 1)
 }
