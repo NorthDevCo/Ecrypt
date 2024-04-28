@@ -23,43 +23,54 @@ struct UserSignUpForm: View {
             Text("forgot password")
         } else if progress == 1{
             ProgressBar(progress: progress)
+            Spacer()
             Text("biometrics")
         } else {
-            ProgressBar(progress: progress)
-            VStack (alignment: .leading){
-                Spacer(minLength: 60)
-                HStack {
-                    inputView(text: $password, placeholder: "Enter a password", title: "Create a Password", imageName: "lock", isSecureField: secureField)
-                        .padding(.bottom, 6)
-                    Button(action: {
-                        if secureField == true {
-                            secureField = false
-                        } else {
-                            secureField = true
-                        }
-                    }, label: {
-                        Text(secureField == true ? "Show" : "Hide")
-                    }).buttonStyle(.borderless)
-                        .padding(.top, 10)
-                }
-                HStack {
-                    Text("Weak")
-                    ZStack (alignment: .leading) {
-                        RoundedRectangle(cornerRadius: 25.0)
-                            .frame(width: 300, height: 10)
-                            .foregroundStyle(Color(NSColor(white: 0.4, alpha: 0.2)))
-                        RoundedRectangle(cornerRadius: 25.0)
-                            .frame(width: CGFloat(passwordStrength(password)*60), height: 10)
-                            .foregroundStyle(LinearGradient(colors: [.purple, .blue], startPoint: .leading, endPoint: .trailing))
+            VStack (alignment: .leading, content: {
+
+                ProgressBar(progress: progress)
+                VStack (alignment: .leading){
+                    HStack {
+                        inputView(text: $password, placeholder: "Enter a password", title: "Create a Password", imageName: "lock", isSecureField: secureField)
+                            .padding(.bottom, 6)
+                        Button(action: {
+                            if secureField == true {
+                                secureField = false
+                            } else {
+                                secureField = true
+                            }
+                        }, label: {
+                            Text(secureField == true ? "Show" : "Hide")
+                        }).buttonStyle(.borderless)
+                            .padding(.top, 10)
                     }
-                    Text("Strong")
+                    HStack {
+                        Text("Weak")
+                        ZStack (alignment: .leading) {
+                            RoundedRectangle(cornerRadius: 25.0)
+                                .frame(width: 300, height: 10)
+                                .foregroundStyle(Color(NSColor(white: 0.4, alpha: 0.2)))
+                            RoundedRectangle(cornerRadius: 25.0)
+                                .frame(width: CGFloat(passwordStrength(password)*60), height: 10)
+                                .foregroundStyle(LinearGradient(colors: [.purple, .blue], startPoint: .leading, endPoint: .trailing))
+                        }
+                        Text("Strong")
+                    }
+                }.padding(.vertical)
+                VStack (alignment: .leading) {
+                    Text("Requirements:")
+                    VStack (alignment: .leading) {
+                        Text("Min 10 Characters")
+                        Text("2 Capitals")
+                        Text("1 Number")
+                        Text("1 Special Character")
+                        Text("Can't be a varient of \"password\"")
+                    }.padding(.leading)
                 }
-                Spacer(minLength: 60)
                 Text("To continue read and agree to the Terms of Service")
                 Toggle(isOn: $isOn, label: {
                     Text("I agree to the Terms of Service")
                 })
-                Spacer(minLength: 60)
                 
                 HStack {
                     Spacer()
@@ -79,7 +90,7 @@ struct UserSignUpForm: View {
                                 Image(systemName: "arrow.forward")
                                     .font(.title)
                                     .fontWeight(.bold)
-                                    .foregroundStyle(passwordTesting(password) && isOn ? .white : .gray)
+                                    .foregroundStyle(passwordTesting(password) && isOn ? .white : .clear)
                             }
                         }).buttonStyle(.borderless)
                             .padding()
@@ -89,12 +100,13 @@ struct UserSignUpForm: View {
                         Text("Terms of Service")
                             .onTapGesture {
                                 // make some new window with terms of service
-                            }                    }
-                        Spacer(minLength: 60)
+                            }
                     }
+                    Spacer()
                 }
-            }
+            })
         }
+    }
     
     private func passwordStrength (_ Password: String) -> Int {
         let specials = "!@#$%^&*()_-+={[}]|:;<,>'.?/~`"
@@ -176,7 +188,7 @@ struct UserSignUpForm: View {
                 count += 1
             }
         }
-        if count < 1 {
+        if count < 2 {
             return false
         }
         count = 0
