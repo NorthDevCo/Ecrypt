@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A9443FC82BDF5CCE000FD9FC /* TermsOfServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9443FC72BDF5CCE000FD9FC /* TermsOfServiceView.swift */; };
 		A9FA56F72BD7E312001EDB0D /* EcryptApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FA56F62BD7E312001EDB0D /* EcryptApp.swift */; };
 		A9FA56FB2BD7E313001EDB0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9FA56FA2BD7E313001EDB0D /* Assets.xcassets */; };
 		A9FA56FE2BD7E313001EDB0D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9FA56FD2BD7E313001EDB0D /* Preview Assets.xcassets */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A9443FC72BDF5CCE000FD9FC /* TermsOfServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceView.swift; sourceTree = "<group>"; };
 		A9FA56F32BD7E312001EDB0D /* Ecrypt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ecrypt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9FA56F62BD7E312001EDB0D /* EcryptApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcryptApp.swift; sourceTree = "<group>"; };
 		A9FA56FA2BD7E313001EDB0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				A9FA570F2BD7E364001EDB0D /* LogInView.swift */,
 				A9FA571B2BD94C75001EDB0D /* UserSignUp */,
 				A9FA57172BD7E77C001EDB0D /* ForgotPasswordView.swift */,
+				A9443FC72BDF5CCE000FD9FC /* TermsOfServiceView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				A9FA57152BD7E364001EDB0D /* MainView.swift in Sources */,
 				A9FA57142BD7E364001EDB0D /* LogInView.swift in Sources */,
 				A9FA57162BD7E364001EDB0D /* RegistrationView.swift in Sources */,
+				A9443FC82BDF5CCE000FD9FC /* TermsOfServiceView.swift in Sources */,
 				A9FA570D2BD7E359001EDB0D /* TouchIDAuthenticate.swift in Sources */,
 				A9FA57132BD7E364001EDB0D /* ContentView.swift in Sources */,
 				A9FA57312BDA951F001EDB0D /* UserSignUpForm.swift in Sources */,

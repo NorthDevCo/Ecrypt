@@ -39,7 +39,7 @@ struct RegistrationView: View {
                     
                     Spacer()
                     
-                    UserSignUpForm().frame(minHeight: 600)
+                    UserSignUpForm()
                 }
                 .padding()
             }

@@ -9,10 +9,15 @@ import SwiftUI
 
 struct UserSignUpForm: View {
     
+    @EnvironmentObject private var appState: AppState
     @State var progress: Int = 0
     @State private var password: String = ""
+    @State private var password1: String = ""
     @State var secureField: Bool = true
     @State private var isOn: Bool = false
+    @State private var overText: Bool = false
+    @State private var overText1: Bool = false
+    @Environment(\.openWindow) private var openWindow
     
     var body: some View {
         if progress >= 3 {
@@ -25,59 +30,82 @@ struct UserSignUpForm: View {
             ProgressBar(progress: progress)
             Spacer()
             Text("biometrics")
+            Spacer()
         } else {
             VStack (alignment: .leading, content: {
 
                 ProgressBar(progress: progress)
-                VStack (alignment: .leading){
-                    HStack {
-                        inputView(text: $password, placeholder: "Enter a password", title: "Create a Password", imageName: "lock", isSecureField: secureField)
-                            .padding(.bottom, 6)
-                        Button(action: {
-                            if secureField == true {
-                                secureField = false
-                            } else {
-                                secureField = true
-                            }
-                        }, label: {
-                            Text(secureField == true ? "Show" : "Hide")
-                        }).buttonStyle(.borderless)
-                            .padding(.top, 10)
-                    }
-                    HStack {
-                        Text("Weak")
-                        ZStack (alignment: .leading) {
-                            RoundedRectangle(cornerRadius: 25.0)
-                                .frame(width: 300, height: 10)
-                                .foregroundStyle(Color(NSColor(white: 0.4, alpha: 0.2)))
-                            RoundedRectangle(cornerRadius: 25.0)
-                                .frame(width: CGFloat(passwordStrength(password)*60), height: 10)
-                                .foregroundStyle(LinearGradient(colors: [.purple, .blue], startPoint: .leading, endPoint: .trailing))
+                HStack {
+                    inputView(text: $password, placeholder: "Enter a password", title: "Create a Password", imageName: "", isSecureField: secureField)
+                        .padding(.bottom, 6)
+                        .overlay(alignment: .trailing) {
+                            Button(action: {
+                                if secureField == true {
+                                    secureField = false
+                                } else {
+                                    secureField = true
+                                }
+                            }, label: {
+                                Image(systemName: secureField ? "eye" : "eye.slash")
+                                    .font(.title2)
+                            }).buttonStyle(.borderless)
+                                .padding(.top, 13)
+                                .padding(.trailing, 10)
                         }
-                        Text("Strong")
+                }.padding(.top, 10)
+                HStack {
+                    Text("Weak")
+                    ZStack (alignment: .leading) {
+                        RoundedRectangle(cornerRadius: 25.0)
+                            .frame(width: 300, height: 10)
+                            .foregroundStyle(Color(NSColor(white: 0.4, alpha: 0.2)))
+                        RoundedRectangle(cornerRadius: 25.0)
+                            .frame(width: CGFloat(passwordStrength(password)*60), height: 10)
+                            .foregroundStyle(LinearGradient(colors: [.purple, .blue], startPoint: .leading, endPoint: .trailing))
                     }
-                }.padding(.vertical)
-                VStack (alignment: .leading) {
-                    Text("Requirements:")
-                    VStack (alignment: .leading) {
-                        Text("Min 10 Characters")
-                        Text("2 Capitals")
-                        Text("1 Number")
-                        Text("1 Special Character")
-                        Text("Can't be a varient of \"password\"")
-                    }.padding(.leading)
+                    Text("Strong")
                 }
+                Text("Password must be at least 10 characters")
+                    .font(.subheadline)
+                    .fontWeight(.light)
+                Spacer()
+                
+                HStack {
+                    inputView(text: $password1, placeholder: "Enter a password", title: "Create a Password", imageName: "", isSecureField: secureField)
+                        .padding(.bottom, 6)
+                        .overlay(alignment: .trailing) {
+                            Button(action: {
+                                if secureField == true {
+                                    secureField = false
+                                } else {
+                                    secureField = true
+                                }
+                            }, label: {
+                                Image(systemName: secureField ? "eye" : "eye.slash")
+                                    .font(.title2)
+                            }).buttonStyle(.borderless)
+                                .padding(.top, 13)
+                                .padding(.trailing, 10)
+                        }
+                    Image(systemName: "checkmark")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .foregroundStyle(password == password1 && password1.isEmpty == false ? .green : .clear)
+                        .padding(.top, 9)
+                }.padding(.top, 10)
+                Spacer()
                 Text("To continue read and agree to the Terms of Service")
                 Toggle(isOn: $isOn, label: {
                     Text("I agree to the Terms of Service")
                 })
-                
+                Spacer()
                 HStack {
                     Spacer()
                     VStack {
                         Button(action: {
-                            if passwordTesting(password) && isOn {
+                            if passwordTesting(password, password1) && isOn {
                                 progress = 1
+                                // store password and hash for security!!!
                             }
                         }, label: {
                             HStack {
@@ -85,22 +113,38 @@ struct UserSignUpForm: View {
                                 Text("Continue")
                                     .font(.title)
                                     .fontWeight(.semibold)
-                                    .foregroundStyle(passwordTesting(password) && isOn ? .white : .gray)
+                                    .foregroundStyle(passwordTesting(password, password1) && isOn ? .white : .gray)
                                 Spacer()
                                 Image(systemName: "arrow.forward")
                                     .font(.title)
                                     .fontWeight(.bold)
-                                    .foregroundStyle(passwordTesting(password) && isOn ? .white : .clear)
+                                    .foregroundStyle(passwordTesting(password, password1) && isOn ? .white : .clear)
                             }
                         }).buttonStyle(.borderless)
                             .padding()
                             .frame(width: 300, height: 50)
-                            .background(RoundedRectangle(cornerRadius: 10).fill(passwordTesting(password) && isOn ? .blue : .clear).stroke(passwordTesting(password) && isOn ? .blue : .gray, lineWidth: 3).frame(width: 300, height: 50))
-                        Spacer()
-                        Text("Terms of Service")
-                            .onTapGesture {
-                                // make some new window with terms of service
-                            }
+                            .background(RoundedRectangle(cornerRadius: 10).fill(passwordTesting(password, password1) && isOn ? .blue : .clear).stroke(passwordTesting(password, password1) && isOn ? .blue : .gray, lineWidth: 3).frame(width: 300, height: 50))
+                        HStack {
+                            Text("Terms of Service")
+                                .onHover(perform: { over in
+                                    overText1 = over
+                                })
+                                .foregroundStyle(overText1 ? .blue : .primary)
+                                .onTapGesture {
+                                    openWindow(id: "ToS")
+                                }
+                            Spacer()
+                            Text("Already have and account?")
+                                .onHover(perform: { over in
+                                    overText = over
+                                })
+                                .foregroundStyle(overText ? .blue : .primary)
+                                .onTapGesture {
+                                    appState.clear(.LogInView)
+                                }
+                        }
+                        .frame(width: 300)
+                        .padding(.vertical, 10)
                     }
                     Spacer()
                 }
@@ -156,7 +200,7 @@ struct UserSignUpForm: View {
         return strength
     }
     
-    private func passwordTesting (_ Password: String) -> Bool {
+    private func passwordTesting (_ Password: String, _ Password1: String) -> Bool {
         var count: Int = 0
         let specials = "!@#$%^&*()_-+={[}]|:;<,>'.?/~`"
         let capitals = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -204,6 +248,9 @@ struct UserSignUpForm: View {
             if password.contains(perms) {
                 return false
             }
+        }
+        if Password != Password1 {
+            return false
         }
         return true
     }

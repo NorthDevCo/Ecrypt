@@ -30,7 +30,7 @@ struct inputView: View {
                 if isSecureField == true {
                     HStack {
                         Image(systemName: imageName)
-                            .padding(.horizontal, 10)
+                            .padding(.horizontal, imageName.isEmpty ? 0 : 10)
                             .fontWeight(.semibold)
                             .foregroundStyle(.gray)
                             .font(.title2)
@@ -42,7 +42,7 @@ struct inputView: View {
                 } else {
                     HStack {
                         Image(systemName: imageName)
-                            .padding(.horizontal, 10)
+                            .padding(.horizontal, imageName.isEmpty ? 0 : 10)
                             .fontWeight(.semibold)
                             .foregroundStyle(.gray)
                             .font(.title2)
