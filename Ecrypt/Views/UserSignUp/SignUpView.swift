@@ -10,22 +10,57 @@ import SwiftUI
 struct RegistrationView: View {
     
     @EnvironmentObject private var appState: AppState
+    @State private var progress: Int = 0
+    @State private var overText: Bool = false
+    @State private var overText1: Bool = false
+    @Environment(\.openWindow) private var openWindow
     
     var body: some View {
             VStack {
-                HStack {
-                    Text("Ecrypt")
-                        .font(.system(size: 25, weight: .medium, design: Font.Design.serif))
-                    
-                    Spacer()
-                    
-                    Image("Icon_full")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 40, height: 40)
+                if progress >= 3 {
+                    HStack {
+                        Text("Ecrypt")
+                            .font(.system(size: 25, weight: .medium, design: Font.Design.serif))
+                        
+                        Spacer()
+                        
+                        Image("Icon_full")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 40, height: 40)
+                    }
+                    UserSignUpForm()
+                        .padding()
+                } else if progress == 2 {
+                    Text("k")
+                } else if progress == 1 {
+                    Text("k")
+                } else {
+                    Text("K")
                 }
-                UserSignUpForm()
-                    .padding()
+                HStack {
+                    Spacer()
+                    Text(" Terms of Service")
+                        .onHover(perform: { over in
+                            overText1 = over
+                        })
+                        .foregroundStyle(overText1 ? .blue : .primary)
+                        .onTapGesture {
+                            openWindow(id: "ToS")
+                        }
+                    RoundedRectangle(cornerRadius: 10)
+                        .frame(width: 2, height: 15)
+                        .foregroundStyle(.gray)
+                    Text("Have an account?")
+                        .onHover(perform: { over in
+                            overText = over
+                        })
+                        .foregroundStyle(overText ? .blue : .primary)
+                        .onTapGesture {
+                            appState.clear(.LogInView)
+                        }
+                    Spacer()
+                }
             }
             .padding()
             .frame(width: 580)
@@ -40,9 +75,6 @@ struct UserSignUpForm: View {
     @State private var password1: String = ""
     @State var secureField: Bool = true
     @State private var isOn: Bool = false
-    @State private var overText: Bool = false
-    @State private var overText1: Bool = false
-    @Environment(\.openWindow) private var openWindow
     
     var body: some View {
         if progress >= 3 {
@@ -59,7 +91,7 @@ struct UserSignUpForm: View {
         } else {
             VStack (alignment: .leading, content: {
                 Text("Getting Started")
-                    .font(.system(size: 30, weight: .bold))
+                    .font(.system(size: 25, weight: .bold))
                 Text("Let's jump in")
                     .font(.system(size: 15))
                     .foregroundStyle(.gray)
@@ -155,31 +187,10 @@ struct UserSignUpForm: View {
                             .padding()
                             .frame(width: 300, height: 50)
                             .background(RoundedRectangle(cornerRadius: 10).fill(passwordTesting(password, password1) && isOn ? .blue : .clear).stroke(passwordTesting(password, password1) && isOn ? .blue : .gray, lineWidth: 3).frame(width: 300, height: 50))
-                        HStack {
-                            Text("Terms of Service")
-                                .onHover(perform: { over in
-                                    overText1 = over
-                                })
-                                .foregroundStyle(overText1 ? .blue : .primary)
-                                .onTapGesture {
-                                    openWindow(id: "ToS")
-                                }
-                            Spacer()
-                            Text("Already have and account?")
-                                .onHover(perform: { over in
-                                    overText = over
-                                })
-                                .foregroundStyle(overText ? .blue : .primary)
-                                .onTapGesture {
-                                    appState.clear(.LogInView)
-                                }
-                        }
-                        .frame(width: 300)
-                        .padding(.vertical, 10)
-                    }
+                    }.padding(.top)
                     Spacer()
                 }
-            }).padding(20)
+            })
         }
     }
             
