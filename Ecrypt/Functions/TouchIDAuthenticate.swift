@@ -7,6 +7,6 @@
 
 import Foundation
 
-func touchIDAuthenticate() {
-    
+func touchIDAuthenticate() -> Bool  {
+    return true
 }

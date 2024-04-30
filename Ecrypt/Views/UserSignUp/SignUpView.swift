@@ -16,6 +16,10 @@ struct RegistrationView: View {
     @Environment(\.openWindow) private var openWindow
     
     var body: some View {
+        ZStack {
+            
+            Color(progress < 3 ? .white : .clear)
+            
             VStack {
                 if progress >= 3 {
                     HStack {
@@ -29,61 +33,78 @@ struct RegistrationView: View {
                             .scaledToFit()
                             .frame(width: 40, height: 40)
                     }
-                    UserSignUpForm()
+                    UserSignUpForm(progress: progress)
                         .padding()
                 } else if progress == 2 {
-                    Text("k")
+                    Text("2")
+                        .onTapGesture {
+                            progress = 3
+                        }
                 } else if progress == 1 {
-                    Text("k")
+                    Text("1")
+                        .onTapGesture {
+                            progress = 2
+                        }
                 } else {
-                    Text("K")
+                    Text("0")
+                        .onTapGesture {
+                            progress = 1
+                        }
                 }
                 HStack {
-                    Spacer()
-                    Text(" Terms of Service")
-                        .onHover(perform: { over in
-                            overText1 = over
-                        })
-                        .foregroundStyle(overText1 ? .blue : .primary)
-                        .onTapGesture {
-                            openWindow(id: "ToS")
-                        }
-                    RoundedRectangle(cornerRadius: 10)
-                        .frame(width: 2, height: 15)
-                        .foregroundStyle(.gray)
-                    Text("Have an account?")
-                        .onHover(perform: { over in
-                            overText = over
-                        })
-                        .foregroundStyle(overText ? .blue : .primary)
-                        .onTapGesture {
-                            appState.clear(.LogInView)
-                        }
-                    Spacer()
+                    if progress < 1 {
+                        Spacer()
+                        Text(" Terms of Service")
+                            .onHover(perform: { over in
+                                overText1 = over
+                            })
+                            .foregroundStyle(overText1 ? .blue : .primary)
+                            .onTapGesture {
+                                openWindow(id: "ToS")
+                            }
+                        RoundedRectangle(cornerRadius: 10)
+                            .frame(width: 2, height: 15)
+                            .foregroundStyle(.gray)
+                        Text("Have an account?")
+                            .onHover(perform: { over in
+                                overText = over
+                            })
+                            .foregroundStyle(overText ? .blue : .primary)
+                            .onTapGesture {
+                                appState.clear(.LogInView)
+                            }
+                        Spacer()
+                    } else {
+                        Text(" Terms of Service")
+                            .onHover(perform: { over in overText1 = over })
+                            .foregroundStyle(overText1 ? .blue : .primary)
+                            .onTapGesture { openWindow(id: "ToS") }
+                    }
                 }
             }
             .padding()
             .frame(width: 580)
+        }
     }
 }
 
 struct UserSignUpForm: View {
     
     @EnvironmentObject private var appState: AppState
-    @State var progress: Int = 0
+    @State var progress: Int
     @State private var password: String = ""
     @State private var password1: String = ""
     @State var secureField: Bool = true
     @State private var isOn: Bool = false
     
     var body: some View {
-        if progress >= 3 {
+        if progress >= 6 {
             ProgressBar(progress: progress)
             Text("completed welcome")
-        } else if progress == 2 {
+        } else if progress == 5 {
             ProgressBar(progress: progress)
             Text("forgot password")
-        } else if progress == 1 {
+        } else if progress == 4 {
             ProgressBar(progress: progress)
             Spacer()
             Text("biometrics")
