@@ -20,37 +20,48 @@ struct RegistrationView: View {
             
             Color(progress < 3 ? .white : .clear)
             
-            VStack {
-                if progress >= 3 {
-                    HStack {
-                        Text("Ecrypt")
-                            .font(.system(size: 25, weight: .medium, design: Font.Design.serif))
+            if progress >= 3 {
+                HStack {
+                    Text("Ecrypt")
+                        .font(.system(size: 25, weight: .medium, design: Font.Design.serif))
                         
-                        Spacer()
+                    Spacer()
                         
-                        Image("Icon_full")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 40, height: 40)
-                    }
-                    UserSignUpForm(progress: progress)
-                        .padding()
-                } else if progress == 2 {
-                    Text("2")
-                        .onTapGesture {
-                            progress = 3
-                        }
-                } else if progress == 1 {
-                    Text("1")
-                        .onTapGesture {
-                            progress = 2
-                        }
-                } else {
-                    Text("0")
-                        .onTapGesture {
-                            progress = 1
-                        }
+                    Image("Icon_full")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 40, height: 40)
                 }
+                UserSignUpForm(progress: progress)
+                    .padding()
+            } else if progress == 2 {
+                ZStack {
+                    Circle()
+                        .foregroundStyle(.blue)
+                    Image("Icon_full")
+                }
+                Spacer()
+                Button(action: {
+                    progress = 3
+                }, label: {
+                    Text("Continue")
+                })
+                Spacer()
+            } else if progress == 1 {
+                Button(action: {
+                    progress = 2
+                }, label: {
+                    Text("Continue")
+                })
+            } else {
+                Button(action: {
+                    progress = 1
+                }, label: {
+                    Text("Continue")
+                })
+            }
+            VStack {
+                Spacer()
                 HStack {
                     if progress < 1 {
                         Spacer()
@@ -81,9 +92,7 @@ struct RegistrationView: View {
                             .onTapGesture { openWindow(id: "ToS") }
                     }
                 }
-            }
-            .padding()
-            .frame(width: 580)
+            }.padding()
         }
     }
 }

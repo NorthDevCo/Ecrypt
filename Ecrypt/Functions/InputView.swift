@@ -58,6 +58,10 @@ struct inputView: View {
     }
 }
 
+private func characterFilter(password: String) -> String {
+    return password
+}
+
 #Preview {
     inputView(text: .constant(""), placeholder: "Name@EmailExample.com", title: "Email Address", imageName: "envelope", isSecureField: true)
 }
