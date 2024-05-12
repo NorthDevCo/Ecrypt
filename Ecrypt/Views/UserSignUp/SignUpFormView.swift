@@ -168,58 +168,19 @@ struct SignUpFormView: View {
     }
     
     private func passwordTesting (_ Password: String, _ Password1: String) -> Bool {
-        var count: Int = 0
-        let specials = "!@#$%^&*()_-+={[}]|:;<,>'.?/~`"
-        let capitals = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        let lowercase = "abcdefghijklmnopqrstuvwxyz"
-        let numbers = "1234567890"
-        if Password.count < 10 {
-            return false
-        }
-        for letter in Password {
-            if specials.contains(letter) {
-                count += 1
-            }
-        }
-        if count < 1 {
-            return false
-        }
-        count = 0
-        for letter in Password {
-            if numbers.contains(letter) {
-                count += 1
-            }
-        }
-        if count < 1 {
-            return false
-        }
-        count = 0
-        for letter in Password {
-            if capitals.contains(letter) {
-                count += 1
-            }
-        }
-        if count < 2 {
-            return false
-        }
-        count = 0
-        for letter in Password {
-            if lowercase.contains(letter) {
-                count += 1
-            }
-        }
-        if count < 1 {
-            return false
-        }
+        var isValid : Bool
+        let passwordRegEx = "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{6,16}"
+        let passwordTest = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)
+        isValid = passwordTest.evaluate(with: password)
         for perms in passwordPermutations {
             if Password.contains(perms) {
-                return false
+                isValid = false
             }
         }
         if Password != Password1 {
-            return false
+            isValid = false
         }
-        return true
+        return isValid
     }
 }
 
