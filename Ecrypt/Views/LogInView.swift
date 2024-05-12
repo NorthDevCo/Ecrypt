@@ -40,12 +40,15 @@ struct LogInView: View {
                                     .padding(.horizontal, 5)
                                     .font(.system(size: 20))
                                     .textFieldStyle(.plain)
+                                    .onChange(of: password) {
+                                        password = characterFilter(Password: password)
+                                    }
                                         
                                 RoundedRectangle(cornerRadius: 10)
                                     .frame(width: 2, height: 30)
                                     .foregroundStyle(.gray)
                                         
-                                if password.isEmpty {
+                                if password.isEmpty && isDeviceSupportedforAuth() {
                                     Button(action: {
                                         appState.push(.MainView)
                                     }, label: {
@@ -101,6 +104,13 @@ struct LogInView: View {
             .padding()
         }
     }
+}
+
+private func characterFilter(Password: String) -> String {
+    var password = Password
+    let passwordRegEx: Set<Character> = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","!","@","#","$","%","^","&","*","(",")","-","_","+","=",",",".","<",">","?","/","'",":",";","{","[","]","}","|","1","2","3","4","5","6","7","8","9","0","`","~"]
+    password = password.filter( passwordRegEx.contains(_:))
+    return password
 }
 
 #Preview {
