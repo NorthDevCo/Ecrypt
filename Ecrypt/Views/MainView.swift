@@ -13,7 +13,7 @@ struct MainView: View {
     
     var body: some View {
         Button(action: {
-            appState.pop()
+            appState.clear(.LogInView)
         }, label: {
             Text("Back")
         })

@@ -8,9 +8,8 @@
 import Foundation
 import LocalAuthentication
 
-
 func isDeviceSupportedforAuth () -> Bool {
-    let  context = LAContext()
+    let context = LAContext()
     var policy: LAPolicy?
     policy = .deviceOwnerAuthenticationWithBiometrics
     var err: NSError?
@@ -21,6 +20,18 @@ func isDeviceSupportedforAuth () -> Bool {
 }
 
 
-func touchIDAuthenticate() -> Bool  {
-    return true
+func touchIDAuthenticate(appstate: AppState) {
+    let context = LAContext()
+    var err: NSError?
+    let reason = "TouchID for Ecrypt"
+    context.evaluatePolicy(
+        .deviceOwnerAuthenticationWithBiometrics,
+        localizedReason: reason
+    ) { success, err in
+        if success {
+            appstate.clear(.MainView)
+        } else {
+            
+        }
+    }
 }
