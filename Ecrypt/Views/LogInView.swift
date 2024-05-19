@@ -50,7 +50,7 @@ struct LogInView: View {
                                         
                                 if password.isEmpty && isDeviceSupportedforAuth() {
                                     Button(action: {
-                                        touchIDAuthenticate(appstate: appState)
+                                        touchIDAuthenticate(appState: appState)
                                     }, label: {
                                         Image(systemName: "touchid")
                                             .foregroundStyle(.red)

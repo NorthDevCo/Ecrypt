@@ -12,24 +12,23 @@ func isDeviceSupportedforAuth () -> Bool {
     let context = LAContext()
     var policy: LAPolicy?
     policy = .deviceOwnerAuthenticationWithBiometrics
-    var err: NSError?
-    guard context.canEvaluatePolicy(policy!, error: &err) else {
+    var LAError: NSError?
+    guard context.canEvaluatePolicy(policy!, error: &LAError) else {
         return false
     }
     return true
 }
 
 
-func touchIDAuthenticate(appstate: AppState) {
+func touchIDAuthenticate(appState: AppState) {
     let context = LAContext()
-    var err: NSError?
+    let policy: LAPolicy = .deviceOwnerAuthenticationWithBiometrics
     let reason = "TouchID for Ecrypt"
-    context.evaluatePolicy(
-        .deviceOwnerAuthenticationWithBiometrics,
-        localizedReason: reason
-    ) { success, err in
+    context.evaluatePolicy(policy, localizedReason: reason) { success, err in
         if success {
-            appstate.clear(.MainView)
+            DispatchQueue.main.async {
+                appState.clear(.MainView)
+            }
         } else {
             
         }
