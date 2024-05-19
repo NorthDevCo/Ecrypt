@@ -39,6 +39,7 @@ struct RegistrationView: View {
                     .padding()
             }
             Spacer()
+            BottomToolbarView()
         }
     }
 }

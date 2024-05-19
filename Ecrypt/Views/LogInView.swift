@@ -13,6 +13,9 @@ struct LogInView: View {
     @State private var password = ""
     @State private var overButton: Bool = false
     @State private var overText: Bool = false
+    @State private var overText1: Bool = false
+    @State private var overText2: Bool = false
+    @Environment(\.openWindow) private var openWindow
     
     var body: some View {
         VStack {
@@ -97,12 +100,31 @@ struct LogInView: View {
                         })
                         .buttonStyle(.borderless)
                     }.frame(width: 400, height: 60)
-                        .padding(.bottom)
+                    HStack {
+                        Spacer()
+                        Text("   Terms of Service")
+                            .onHover(perform: { over in
+                                overText1 = over
+                            })
+                            .foregroundStyle(overText1 ? .blue : .primary)
+                            .onTapGesture { openWindow(id: "ToS") }
+                        RoundedRectangle(cornerRadius: 10)
+                            .frame(width: 2, height: 15)
+                            .foregroundStyle(.gray)
+                        Text("Register an Account")
+                            .onHover(perform: { over in
+                                overText2 = over
+                            })
+                            .foregroundStyle(overText2 ? .blue : .primary)
+                            .onTapGesture { appState.clear(.RegistrationView) }
+                        Spacer()
+                    }
+                    .padding()
                 }
                 .padding()
             }
             .padding()
-        }
+        }.padding()
     }
 }
 
