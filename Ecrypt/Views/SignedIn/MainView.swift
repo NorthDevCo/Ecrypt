@@ -36,7 +36,11 @@ struct MainView: View {
                                 Image(systemName: isOver ? "house.fill" : "house")
                                     .font(.system(size: 18))
                                     .foregroundStyle(isOver ? .yellow : .primary)
-                                Text("Home")
+                                Image("1")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 35)
+
                             }.padding(.vertical,5)
                                 .matchedGeometryEffect(id: "house", in: animation)
                                 .onTapGesture {
@@ -51,7 +55,10 @@ struct MainView: View {
                                     .font(.system(size: 18))
                                     .padding(.horizontal, 1)
                                     .foregroundStyle(isOver2 ? .blue : .primary)
-                                Text("Files")
+                                Image("2")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 30)
                             }.padding(.vertical,5)
                                 .matchedGeometryEffect(id: "folder", in: animation)
                                 .onTapGesture {
@@ -67,7 +74,11 @@ struct MainView: View {
                             HStack {
                                 Image(systemName: isOver4 ? "gearshape.fill" : "gearshape")
                                     .font(.system(size: 18))
-                                Text("Settings")
+                                Image("3")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 50)
+
                             }.padding(.vertical,5)
                                 .matchedGeometryEffect(id: "gear", in: animation)
                                 .onTapGesture {
@@ -82,7 +93,10 @@ struct MainView: View {
                                     .font(.system(size: 18))
                                     .foregroundStyle(isOver1 ? .red : .primary)
                                     .padding(.horizontal, 1.8)
-                                Text("Lock")
+                                Image("4")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 30)
                             }.padding(.vertical,5)
                                 .matchedGeometryEffect(id: "lock", in: animation)
                                 .onTapGesture {

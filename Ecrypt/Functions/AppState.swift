@@ -19,7 +19,7 @@ class AppState: ObservableObject {
     @Published var routes: [Route]
     
     init() {
-        if FileManager.default.fileExists(atPath: FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!.appending(path:"Ecrypt/U-001.EcSUF").path()) {
+        if FileManager.default.fileExists(atPath: FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!.appending(path:"Ecrypt/U-001.txt").path()) {
             self.routes = [.LogInView]
         } else {
             self.routes = [.RegistrationView]

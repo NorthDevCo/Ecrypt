@@ -10,9 +10,10 @@ import SwiftUI
 struct RegistrationView: View {
     
     @EnvironmentObject private var appState: AppState
-    @State private var progress: Int = 0
+    @State private var progress: Int = 3
     @State private var password: String = ""
     @State private var password1: String = ""
+    @State private var nickname: String = ""
     @State var secureField: Bool = true
     @State private var isOn: Bool = false
     @State var isSelected: Bool = false
@@ -34,26 +35,13 @@ struct RegistrationView: View {
             Spacer()
             if progress >= 3 {
                 ProgressBar(progress: progress)
-                Text("completed welcome")
-            } else if progress == 2 {
-                PasswordRestoreSaveView(progress: progress)
-            } else if progress == 1 {
-                ProgressBar(progress: progress)
                 Spacer()
-                VStack {
-                    Text ("Do you consent to using Biometrics to sign in?")
-                        .font(.system(size: 20))
-                    Image(systemName: "touchid")
-                        .font(.system(size: 60))
-                        .fontWeight(.semibold)
-                        .foregroundStyle(.blue)
-                        .padding()
-                    Toggle(isOn: $isSelected, label: {
-                        Text("  I agree to use Biometrics to sign in")
-                    }).padding()
-                }
+                Text("Welcome to Ecrypt")
+                    .font(.system(size: 50, weight: .medium, design: Font.Design.serif))
+                Spacer()
                 Button(action: {
-                        progress = 2
+                    generateUser()
+                    appState.clear(.MainView)
                 }, label: {
                     HStack {
                         Spacer(minLength: 87.5)
@@ -71,6 +59,121 @@ struct RegistrationView: View {
                     .padding()
                     .frame(width: 300, height: 50)
                     .background(RoundedRectangle(cornerRadius: 10).fill(.blue).frame(width: 300, height: 50))
+                Spacer()
+            } else if progress == 2 {
+                ProgressBar(progress: progress)
+                Spacer()
+                Text ("Please give us a nickname to call you!")
+                    .font(.system(size: 25, weight: .medium, design: Font.Design.serif))
+                Spacer()
+                inputView(text: $nickname, placeholder: "Required", title: "Enter a Nickname", imageName: "person").onSubmit {
+                    if nickname.isEmpty == false {
+                        progress = 3
+                    }
+                }
+                Spacer()
+                HStack {
+                    Spacer()
+                    Button(action: {
+                            progress = 1
+                    }, label: {
+                        HStack {
+                            Image(systemName: "arrow.backward")
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .foregroundStyle(.white)
+                            Spacer()
+                            Text("Back")
+                                .font(.title)
+                                .fontWeight(.semibold)
+                                .foregroundStyle(.white)
+                            Spacer()
+                        }
+                    }).buttonStyle(.borderless)
+                        .padding()
+                        .frame(width: 200, height: 50)
+                        .background(RoundedRectangle(cornerRadius: 10).fill(.blue).frame(width: 200, height: 50))
+                    Button(action: {
+                        if nickname.isEmpty == false {
+                            progress = 3
+                        }
+                    }, label: {
+                        HStack {
+                            Spacer()
+                            Text("Continue")
+                                .font(.title)
+                                .fontWeight(.semibold)
+                                .foregroundStyle(.white)
+                            Spacer()
+                            Image(systemName: "arrow.forward")
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .foregroundStyle(.white)
+                        }
+                    }).buttonStyle(.borderless)
+                        .padding()
+                        .frame(width: 200, height: 50)
+                        .background(RoundedRectangle(cornerRadius: 10).fill(.blue).frame(width: 200, height: 50))
+                    Spacer()
+                }
+            } else if progress == 1 {
+                ProgressBar(progress: progress)
+                Spacer()
+                VStack {
+                    Text("Do you consent to using Biometrics to sign in?")
+                        .font(.system(size: 25, weight: .medium, design: Font.Design.serif))
+                    Image(systemName: "touchid")
+                        .font(.system(size: 60))
+                        .fontWeight(.semibold)
+                        .foregroundStyle(.red)
+                        .padding()
+                    Toggle(isOn: $isSelected, label: {
+                        Text("  I agree to use Biometrics to sign in")
+                    }).padding()
+                }
+                Spacer()
+                HStack {
+                    Spacer()
+                    Button(action: {
+                            progress = 0
+                    }, label: {
+                        HStack {
+                            Image(systemName: "arrow.backward")
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .foregroundStyle(.white)
+                            Spacer()
+                            Text("Back")
+                                .font(.title)
+                                .fontWeight(.semibold)
+                                .foregroundStyle(.white)
+                            Spacer()
+                        }
+                    }).buttonStyle(.borderless)
+                        .padding()
+                        .frame(width: 200, height: 50)
+                        .background(RoundedRectangle(cornerRadius: 10).fill(.blue).frame(width: 200, height: 50))
+                    Button(action: {
+                            progress = 2
+                    }, label: {
+                        HStack {
+                            Spacer()
+                            Text("Continue")
+                                .font(.title)
+                                .fontWeight(.semibold)
+                                .foregroundStyle(.white)
+                            Spacer()
+                            Image(systemName: "arrow.forward")
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .foregroundStyle(.white)
+                        }
+                    }).buttonStyle(.borderless)
+                        .padding()
+                        .frame(width: 200, height: 50)
+                        .background(RoundedRectangle(cornerRadius: 10).fill(.blue).frame(width: 200, height: 50))
+                    Spacer()
+                }
                 Spacer()
             } else {
                 VStack (alignment: .leading, content: {
@@ -281,6 +384,11 @@ struct RegistrationView: View {
         isValid = false
     }
     return isValid
+    }
+    
+    private func generateUser() {
+        let user = User(psword: password, nckname: nickname, isBioAuthed: isSelected)
+        print(user)
     }
 
 }
