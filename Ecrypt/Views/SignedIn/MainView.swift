@@ -105,7 +105,7 @@ struct MainView: View {
                             .matchedGeometryEffect(id: "logo", in: animation)
                         Image(systemName: selectedTab == 1 ? "house.fill" : "house")
                             .font(.system(size: 18))
-                            .foregroundStyle(selectedTab == 1 ? .indigo : .primary)
+                            .foregroundStyle(selectedTab == 1 ? .yellow : .primary)
                             .padding(.bottom,5)
                             .matchedGeometryEffect(id: "house", in: animation)
                             .onTapGesture {

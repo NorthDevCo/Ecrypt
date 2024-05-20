@@ -16,7 +16,15 @@ enum Route {
 
 class AppState: ObservableObject {
     
-    @Published var routes: [Route] = [.LogInView]
+    @Published var routes: [Route]
+    
+    init() {
+        if FileManager.default.fileExists(atPath: FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!.appending(path:"Ecrypt/U-001.EcSUF").path()) {
+            self.routes = [.LogInView]
+        } else {
+            self.routes = [.RegistrationView]
+        }
+    }
     
     var currentRoute: Route? {
         routes.last

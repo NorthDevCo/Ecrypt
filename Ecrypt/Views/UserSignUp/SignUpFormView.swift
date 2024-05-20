@@ -55,6 +55,9 @@ struct SignUpFormView: View {
                 }
                 Text("Strong")
             }
+            Text("Password must have: 2 Numbers, 2 Capitals and 1 Special Character")
+                .font(.subheadline)
+                .fontWeight(.light)
             Text("Password must be at least 10 characters")
                 .font(.subheadline)
                 .fontWeight(.light)
@@ -168,16 +171,51 @@ struct SignUpFormView: View {
     }
     
     private func passwordTesting (_ Password: String, _ Password1: String) -> Bool {
-        var isValid : Bool
-        let passwordRegEx = "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{6,16}"
-        let passwordTest = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)
-        isValid = passwordTest.evaluate(with: password)
-        for perms in passwordPermutations {
-            if Password.contains(perms) {
-                isValid = false
+        let specials = "!@#$%^&*()_-+={[}]|:;<,>'.?/~`"
+        let capitals = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        let lowercase = "abcdefghijklmnopqrstuvwxyz"
+        let numbers = "1234567890"
+        var isValid = true
+        var count = 0
+        if Password != Password1 {
+            isValid = false
+        }
+        if Password.count < 10 {
+            isValid = false
+        }
+        for letter in Password {
+            if specials.contains(letter) {
+                count += 1
             }
         }
-        if Password != Password1 {
+        if count < 1 {
+            isValid = false
+        }
+        count = 0
+        for letter in Password {
+            if numbers.contains(letter) {
+                count += 1
+            }
+        }
+        if count < 2 {
+            isValid = false
+        }
+        count = 0
+        for letter in Password {
+            if capitals.contains(letter) {
+                count += 1
+            }
+        }
+        if count < 2 {
+            isValid = false
+        }
+        count = 0
+        for letter in Password {
+            if lowercase.contains(letter) {
+                count += 1
+            }
+        }
+        if count < 2 {
             isValid = false
         }
         return isValid

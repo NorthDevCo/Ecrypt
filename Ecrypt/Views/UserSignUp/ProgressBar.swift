@@ -17,11 +17,11 @@ struct ProgressBar: View {
                 Spacer(minLength: 30)
                 RoundedRectangle(cornerRadius: 25.0)
                     .frame(width: 200, height: 3)
-                    .foregroundStyle(progress >= 4 ? .green : .gray)
+                    .foregroundStyle(progress >= 1 ? .green : .gray)
                 Spacer(minLength: 40)
                 RoundedRectangle(cornerRadius: 25.0)
                     .frame(width: 200, height: 3)
-                    .foregroundStyle(progress >= 5 ? .green : .gray)
+                    .foregroundStyle(progress >= 2 ? .green : .gray)
                 Spacer(minLength: 30)
             }
             
@@ -29,13 +29,13 @@ struct ProgressBar: View {
                 ZStack {
                     Circle()
                         .frame(width: 20, alignment: .center)
-                        .foregroundStyle(progress >= 4 ? .green : .clear)
+                        .foregroundStyle(progress >= 1 ? .green : .clear)
                     Circle()
                         .stroke(lineWidth: 2)
                         .frame(width: 20, alignment: .center)
                         .foregroundStyle(.green)
                         .overlay(alignment: .center) {
-                            if progress >= 4 {
+                            if progress >= 1 {
                                 Image(systemName: "checkmark")
                                     .foregroundStyle(.white)
                                     .fontWeight(.bold)
@@ -50,13 +50,13 @@ struct ProgressBar: View {
                 ZStack {
                     Circle()
                         .frame(width: 20, alignment: .center)
-                        .foregroundStyle(progress >= 5 ? .green : .clear)
+                        .foregroundStyle(progress >= 2 ? .green : .clear)
                     Circle()
                         .stroke(lineWidth: 2)
                         .frame(width: 20, alignment: .center)
-                        .foregroundStyle(progress >= 4 ? .green : .gray)
+                        .foregroundStyle(progress >= 1 ? .green : .gray)
                         .overlay(alignment: .center) {
-                            if progress >= 5 {
+                            if progress >= 2 {
                                 Image(systemName: "checkmark")
                                     .foregroundStyle(.white)
                                     .fontWeight(.bold)
@@ -71,13 +71,13 @@ struct ProgressBar: View {
                 ZStack {
                     Circle()
                         .frame(width: 20, alignment: .center)
-                        .foregroundStyle(progress >= 6 ? .green : .clear)
+                        .foregroundStyle(progress >= 3 ? .green : .clear)
                     Circle()
                         .stroke(lineWidth: 2)
                         .frame(width: 20, alignment: .center)
-                        .foregroundStyle(progress >= 5 ? .green : .gray)
+                        .foregroundStyle(progress >= 2 ? .green : .gray)
                         .overlay(alignment: .center) {
-                            if progress >= 6 {
+                            if progress >= 3 {
                                 Image(systemName: "checkmark")
                                     .foregroundStyle(.white)
                                     .fontWeight(.bold)
@@ -94,5 +94,5 @@ struct ProgressBar: View {
 }
 
 #Preview {
-    ProgressBar(progress: 4)
+    ProgressBar(progress: 3)
 }

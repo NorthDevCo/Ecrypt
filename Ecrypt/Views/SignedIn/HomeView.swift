@@ -10,7 +10,14 @@ import SwiftUI
 struct HomeView: View {
     
     var body: some View {
-            Text("home")
+        VStack {
+            HStack {
+                Text("Welcome")
+            }
+            HStack {
+                
+            }
+        }
     }
 }
 
