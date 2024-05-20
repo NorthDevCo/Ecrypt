@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		A9443FC82BDF5CCE000FD9FC /* TermsOfServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9443FC72BDF5CCE000FD9FC /* TermsOfServiceView.swift */; };
-		A9443FCA2BDF9FCD000FD9FC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9443FC92BDF9FCD000FD9FC /* SettingsView.swift */; };
 		A970E9582BEC8B61003A7D09 /* SignUpFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A970E9572BEC8B61003A7D09 /* SignUpFormView.swift */; };
 		A98BF1A92BF9CB8B00A415DC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98BF1A82BF9CB8B00A415DC /* User.swift */; };
+		A9AB727B2BFB4CDC00212F0B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AB727A2BFB4CDC00212F0B /* HomeView.swift */; };
+		A9AB727D2BFB588500212F0B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AB727C2BFB588500212F0B /* SettingsView.swift */; };
+		A9AB72812BFB589D00212F0B /* FilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AB72802BFB589D00212F0B /* FilesView.swift */; };
 		A9FA56F72BD7E312001EDB0D /* EcryptApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FA56F62BD7E312001EDB0D /* EcryptApp.swift */; };
 		A9FA56FB2BD7E313001EDB0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9FA56FA2BD7E313001EDB0D /* Assets.xcassets */; };
 		A9FA56FE2BD7E313001EDB0D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9FA56FD2BD7E313001EDB0D /* Preview Assets.xcassets */; };
@@ -29,9 +31,11 @@
 
 /* Begin PBXFileReference section */
 		A9443FC72BDF5CCE000FD9FC /* TermsOfServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceView.swift; sourceTree = "<group>"; };
-		A9443FC92BDF9FCD000FD9FC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A970E9572BEC8B61003A7D09 /* SignUpFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpFormView.swift; sourceTree = "<group>"; };
 		A98BF1A82BF9CB8B00A415DC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A9AB727A2BFB4CDC00212F0B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A9AB727C2BFB588500212F0B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A9AB72802BFB589D00212F0B /* FilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesView.swift; sourceTree = "<group>"; };
 		A9FA56F32BD7E312001EDB0D /* Ecrypt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ecrypt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9FA56F62BD7E312001EDB0D /* EcryptApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcryptApp.swift; sourceTree = "<group>"; };
 		A9FA56FA2BD7E313001EDB0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -41,7 +45,7 @@
 		A9FA57062BD7E359001EDB0D /* InputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		A9FA57072BD7E359001EDB0D /* PasswordAuthenticate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordAuthenticate.swift; sourceTree = "<group>"; };
 		A9FA57082BD7E359001EDB0D /* TouchIDAuthenticate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchIDAuthenticate.swift; sourceTree = "<group>"; };
-		A9FA570E2BD7E364001EDB0D /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A9FA570E2BD7E364001EDB0D /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = Views/ContentView.swift; sourceTree = "<group>"; };
 		A9FA570F2BD7E364001EDB0D /* LogInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		A9FA57102BD7E364001EDB0D /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		A9FA57112BD7E364001EDB0D /* SignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
@@ -61,6 +65,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A9AB72832BFB59EB00212F0B /* SignedIn */ = {
+			isa = PBXGroup;
+			children = (
+				A9FA57102BD7E364001EDB0D /* MainView.swift */,
+				A9AB727A2BFB4CDC00212F0B /* HomeView.swift */,
+				A9AB72802BFB589D00212F0B /* FilesView.swift */,
+				A9AB727C2BFB588500212F0B /* SettingsView.swift */,
+			);
+			path = SignedIn;
+			sourceTree = "<group>";
+		};
 		A9FA56EA2BD7E312001EDB0D = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				A9FA56F62BD7E312001EDB0D /* EcryptApp.swift */,
+				A9FA570E2BD7E364001EDB0D /* ContentView.swift */,
 				A9FA57122BD7E364001EDB0D /* Views */,
 				A9FA57092BD7E359001EDB0D /* Functions */,
 				A9FA56FA2BD7E313001EDB0D /* Assets.xcassets */,
@@ -113,13 +129,11 @@
 		A9FA57122BD7E364001EDB0D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A9FA570E2BD7E364001EDB0D /* ContentView.swift */,
-				A9FA57102BD7E364001EDB0D /* MainView.swift */,
-				A9FA570F2BD7E364001EDB0D /* LogInView.swift */,
+				A9AB72832BFB59EB00212F0B /* SignedIn */,
 				A9FA571B2BD94C75001EDB0D /* UserSignUp */,
+				A9FA570F2BD7E364001EDB0D /* LogInView.swift */,
 				A9FA57172BD7E77C001EDB0D /* ForgotPasswordView.swift */,
 				A9443FC72BDF5CCE000FD9FC /* TermsOfServiceView.swift */,
-				A9443FC92BDF9FCD000FD9FC /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -151,6 +165,8 @@
 			dependencies = (
 			);
 			name = Ecrypt;
+			packageProductDependencies = (
+			);
 			productName = Ecrypt;
 			productReference = A9FA56F32BD7E312001EDB0D /* Ecrypt.app */;
 			productType = "com.apple.product-type.application";
@@ -179,6 +195,8 @@
 				Base,
 			);
 			mainGroup = A9FA56EA2BD7E312001EDB0D;
+			packageReferences = (
+			);
 			productRefGroup = A9FA56F42BD7E312001EDB0D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -210,17 +228,19 @@
 				A9FA571D2BD94DA3001EDB0D /* ProgressBar.swift in Sources */,
 				A9FA57152BD7E364001EDB0D /* MainView.swift in Sources */,
 				A98BF1A92BF9CB8B00A415DC /* User.swift in Sources */,
+				A9AB727D2BFB588500212F0B /* SettingsView.swift in Sources */,
 				A9FA57142BD7E364001EDB0D /* LogInView.swift in Sources */,
 				A9FA57162BD7E364001EDB0D /* SignUpView.swift in Sources */,
 				A9443FC82BDF5CCE000FD9FC /* TermsOfServiceView.swift in Sources */,
 				A9FA570D2BD7E359001EDB0D /* TouchIDAuthenticate.swift in Sources */,
+				A9AB72812BFB589D00212F0B /* FilesView.swift in Sources */,
 				A9FA57132BD7E364001EDB0D /* ContentView.swift in Sources */,
+				A9AB727B2BFB4CDC00212F0B /* HomeView.swift in Sources */,
 				A9FA56F72BD7E312001EDB0D /* EcryptApp.swift in Sources */,
 				A9FA57212BDA5D31001EDB0D /* PasswordPermutations.swift in Sources */,
 				A9FA570A2BD7E359001EDB0D /* AppState.swift in Sources */,
 				A9FA57182BD7E77C001EDB0D /* ForgotPasswordView.swift in Sources */,
 				A9FA570C2BD7E359001EDB0D /* PasswordAuthenticate.swift in Sources */,
-				A9443FCA2BDF9FCD000FD9FC /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
