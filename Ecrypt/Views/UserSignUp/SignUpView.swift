@@ -10,14 +10,13 @@ import SwiftUI
 struct RegistrationView: View {
     
     @EnvironmentObject private var appState: AppState
-    @State private var progress: Int = 3
+    @State private var progress: Int = 0
     @State private var password: String = ""
     @State private var password1: String = ""
     @State private var nickname: String = ""
     @State var secureField: Bool = true
     @State private var isOn: Bool = false
     @State var isSelected: Bool = false
-
     
     var body: some View {
         VStack {
@@ -387,8 +386,12 @@ struct RegistrationView: View {
     }
     
     private func generateUser() {
-        let user = User(psword: password, nckname: nickname, isBioAuthed: isSelected)
-        print(user)
+        do {
+           let user = try User(psword: password, nckname: nickname, isBioAuthed: isSelected)
+
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 
 }
@@ -440,6 +443,3 @@ struct PasswordRestoreSaveView: View {
     }
 }
 
-#Preview {
-    RegistrationView()
-}

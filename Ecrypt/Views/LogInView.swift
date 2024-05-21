@@ -15,6 +15,7 @@ struct LogInView: View {
     @State private var overText: Bool = false
     @State private var overText1: Bool = false
     @State private var overText2: Bool = false
+    @State var isMatchingUUID: Bool = false
     @Environment(\.openWindow) private var openWindow
     
     var body: some View {
@@ -46,6 +47,9 @@ struct LogInView: View {
                                     .onChange(of: password) {
                                         password = characterFilter(Password: password)
                                     }
+                                    .onSubmit {
+                                        passwordAuthenticate(password, appState: appState)
+                                    }
                                         
                                 RoundedRectangle(cornerRadius: 10)
                                     .frame(width: 2, height: 30)
@@ -68,7 +72,7 @@ struct LogInView: View {
                                     .padding(.trailing, 10)
                                 } else {
                                     Button(action: {
-                                        appState.push(.MainView)
+                                        passwordAuthenticate(password, appState: appState)
                                     }, label: {
                                         Image(systemName: "arrow.forward")
                                             .foregroundStyle(.blue)

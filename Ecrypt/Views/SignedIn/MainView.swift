@@ -10,6 +10,7 @@ import SwiftUI
 struct MainView: View {
     
     @EnvironmentObject private var appState: AppState
+    @Environment(\.colorScheme) var colourScheme
     @Namespace private var animation
     @State var selectedTab: Int = 1
     @State var isExpanded: Bool = false
@@ -36,7 +37,7 @@ struct MainView: View {
                                 Image(systemName: isOver ? "house.fill" : "house")
                                     .font(.system(size: 18))
                                     .foregroundStyle(isOver ? .yellow : .primary)
-                                Image("1")
+                                Image(colourScheme == .dark ? "1.light" : "1")
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 35)
@@ -55,7 +56,7 @@ struct MainView: View {
                                     .font(.system(size: 18))
                                     .padding(.horizontal, 1)
                                     .foregroundStyle(isOver2 ? .blue : .primary)
-                                Image("2")
+                                Image(colourScheme == .dark ? "2.light" : "2")
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 30)
@@ -74,7 +75,7 @@ struct MainView: View {
                             HStack {
                                 Image(systemName: isOver4 ? "gearshape.fill" : "gearshape")
                                     .font(.system(size: 18))
-                                Image("3")
+                                Image(colourScheme == .dark ? "3.light" : "3")
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 50)
@@ -93,7 +94,7 @@ struct MainView: View {
                                     .font(.system(size: 18))
                                     .foregroundStyle(isOver1 ? .red : .primary)
                                     .padding(.horizontal, 1.8)
-                                Image("4")
+                                Image(colourScheme == .dark ? "4.light" : "4")
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 30)
@@ -181,7 +182,7 @@ struct MainView: View {
             } else if selectedTab == 2 {
                 FilesView()
             } else {
-                SettingsView()
+                SettingsView(nickname: "pp", isOn: true)
             }
             Spacer()
         }

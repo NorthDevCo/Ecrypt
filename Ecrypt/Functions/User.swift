@@ -12,54 +12,49 @@ import Security
 
 class User {
     
+    @Published var userInfo: [String] = []
     let savePath = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!.appending(path: "Ecrypt")
     let userSavePath: URL = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!.appending(path:"Ecrypt").appending(path: "U-001.txt")
-    let userUUID: NSUUID
-    let encodedUserUUID: Data
-    let password: SHA512Digest
-    let salt: String
+    let userSavePath2: URL = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!.appending(path:"Ecrypt").appending(path: "B-MC2.txt")
+    var userUUID: String
+    var password: String
     var isBioAuth: Bool
     var nickname: String
+    var saveInfo: String = ""
+    var temp: [String] = [""]
+    var temp1: String = ""
     
-    init(psword: String, nckname: String, isBioAuthed: Bool) {
-        
-        if !FileManager.default.fileExists(atPath: userSavePath.path()) {
-            nickname = nckname
-            userUUID = NSUUID()
-            encodedUserUUID = userUUID.uuidString.data(using: .utf8)!
-            salt = NSUUID().uuidString
-            isBioAuth = isBioAuthed
-            password = SHA512.hash(data: psword.data(using: .utf8)!)
-            do {
-                try FileManager.default.createDirectory(atPath: savePath.path(), withIntermediateDirectories: true, attributes: nil)
-            } catch {
-                print(error.localizedDescription)
-            }
-            do {
-                FileManager.default.createFile(atPath: userSavePath.path(), contents: encodedUserUUID)
-            }
+    init(psword: String, nckname: String, isBioAuthed: Bool) throws {
+        nickname = nckname
+        userUUID = NSUUID().uuidString
+        password = SHA512.hash(data: psword.data(using: .utf8)!).description.lowercased()
+        isBioAuth = isBioAuthed
+        saveInfo = userUUID + "|"
+        saveInfo.append(isBioAuth ? "1|" : "0|")
+        saveInfo.append(nickname)
+        saveInfo.append("|")
+        saveInfo.append(password)
+        try FileManager.default.createDirectory(atPath: savePath.path(), withIntermediateDirectories: true, attributes: nil)
+        FileManager.default.createFile(atPath: userSavePath.path(), contents: userUUID.data(using: .utf8))
+        try saveInfo.write(to: userSavePath, atomically: false, encoding: .utf8)
+        try FileManager.default.createDirectory(atPath: savePath.path(), withIntermediateDirectories: true, attributes: nil)
+        FileManager.default.createFile(atPath: userSavePath2.path(), contents: userUUID.data(using: .utf8))
+        try saveInfo.write(to: userSavePath2, atomically: false, encoding: .utf8)
+    }
+    
+    init () throws {
+        try temp1 = String(contentsOf: userSavePath)
+        temp = temp1.components(separatedBy: "|")
+        userUUID = temp[0]
+        if temp[1] == "0" {
+            isBioAuth = false
         } else {
-            do {
-                encodedUserUUID = try String(contentsOf: userSavePath, encoding: .utf8).data(using: .utf8)!
-                userUUID = NSUUID(uuidString: encodedUserUUID.base64EncodedString())!
-                password = SHA512.hash(data: "d".data(using: .utf8)!)
-                salt = ""
-                isBioAuth = true
-                nickname = ""
-                
-            } catch {
-                print(error.localizedDescription)
-            }
+            isBioAuth = true
         }
+        nickname = temp[2]
+        password = temp[3]
     }
     
-    func saveUserInfo (userUUID: NSUUID, password: SHA512Digest, salt: String, nickname: String, isBioAuth: Bool) {
-        
-        if FileManager.default.fileExists(atPath: savePath.path()) {
-            //home
-        }
-        
-    }
     
 }
 
