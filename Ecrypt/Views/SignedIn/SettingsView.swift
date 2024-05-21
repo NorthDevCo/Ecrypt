@@ -11,16 +11,20 @@ import Security
 struct SettingsView: View {
     
     @State var nickname: String
-    @State var isOn: Bool = false
+    @State var isOn: Bool = retrieveIsBioAuth()
     
     var body: some View {
         VStack (alignment: .leading) {
-            Toggle("I consent to sign in with Biometrics", isOn: $isOn)
+            HStack {
+                Text("Fingerprint autherisation is currently approved: \(isOn ? "False" : "True")")
+                Button(action: {
+                    isOn.toggle()
+                    updateIsBioAuth(isAuth: isOn)
+                }, label: {
+                    Text("Change")
+                })
+            }
         }
-    }
-    
-    private func deleteUserAccount (username: String) throws {
-        try FileManager.default.removeItem(atPath: FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!.appending(path:"Ecrypt").appending(path: "U-001.txt").path())
     }
 }
 

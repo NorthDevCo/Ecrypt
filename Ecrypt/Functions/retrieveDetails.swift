@@ -1,0 +1,67 @@
+//
+//  retrieveDetails.swift
+//  Ecrypt
+//
+//  Created by Liam Fletcher on 22/5/2024.
+//
+
+import Foundation
+
+func retrieveNickname() -> String {
+    let temp1 = try! String(contentsOf: FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!.appending(path:"Ecrypt").appending(path: "U-001.txt"))
+    let temp = temp1.components(separatedBy: "|")
+    let nickname = temp[2]
+    return nickname
+}
+
+func retrievePassword() -> String {
+    let temp1 = try! String(contentsOf: FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!.appending(path:"Ecrypt").appending(path: "U-001.txt"))
+    let temp = temp1.components(separatedBy: "|")
+    let password = temp[3]
+    return password
+}
+
+func retrieveIsBioAuth () -> Bool {
+    let temp1 = try! String(contentsOf: FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!.appending(path:"Ecrypt").appending(path: "U-001.txt"))
+    let temp = temp1.components(separatedBy: "|")
+    let isBioAuth = temp[1]
+    if isBioAuth == "1" {
+        return true
+    } else {
+        return false
+    }
+}
+
+func retrieveUserUUID () -> (String, Bool) {
+    let temp1 = try! String(contentsOf: FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!.appending(path:"Ecrypt").appending(path: "U-001.txt"))
+    let temp2 = try! String(contentsOf: FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!.appending(path:"Ecrypt").appending(path: "B-MC2.txt"))
+    let temp = temp1.components(separatedBy: "|")
+    let temps = temp2.components(separatedBy: "|")
+    var isMatching = false
+    if temps[0] == temp[0] {
+        isMatching = true
+    } else {
+        isMatching = false
+    }
+    let userUUID = temp[0]
+    return (userUUID, isMatching)
+}
+
+func updateIsBioAuth (isAuth: Bool) {
+    let nickname = retrieveNickname()
+    let password = retrievePassword()
+    deleteUserAccount()
+    let user = try! User(psword: password, nckname: nickname, isBioAuthed: isAuth)
+}
+
+func updateNickname (nickname: String) {
+    let isBioAuthed = retrieveIsBioAuth()
+    let password = retrievePassword()
+    deleteUserAccount()
+    let user = try! User(psword: password, nckname: nickname, isBioAuthed: isBioAuthed)
+}
+
+func deleteUserAccount () {
+    try! FileManager.default.removeItem(atPath: FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!.appending(path:"Ecrypt").appending(path: "U-001.txt").path())
+    try! FileManager.default.removeItem(atPath: FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!.appending(path:"Ecrypt").appending(path: "B-MC2.txt").path())
+}

@@ -387,8 +387,8 @@ struct RegistrationView: View {
     
     private func generateUser() {
         do {
-           let user = try User(psword: password, nckname: nickname, isBioAuthed: isSelected)
-
+            let user = try User(psword: password, nckname: nickname, isBioAuthed: isSelected)
+            print(isSelected)
         } catch {
             print(error.localizedDescription)
         }

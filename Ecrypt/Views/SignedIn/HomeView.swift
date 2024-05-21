@@ -9,10 +9,12 @@ import SwiftUI
 
 struct HomeView: View {
     
+    let nickname: String = retrieveNickname()
+    
     var body: some View {
         VStack {
             HStack {
-                Text("Welcome")
+                Text("Welcome \(nickname)")
             }
             HStack {
                 

@@ -9,16 +9,7 @@ import Foundation
 import LocalAuthentication
 
 func isDeviceSupportedforAuth () -> Bool {
-    let userSavePath: URL = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!.appending(path:"Ecrypt").appending(path: "U-001.txt")
-    let userSavePath2: URL = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!.appending(path:"Ecrypt").appending(path: "B-MC2.txt")
-    let temp1 = try! String(contentsOf: userSavePath)
-    let temp2 = try! String(contentsOf: userSavePath2)
-    let temp11 = temp1.components(separatedBy: "|")
-    let temp22 = temp2.components(separatedBy: "|")
-    var matchingUserUUID = false
-    if temp22[1] == temp11[1] {
-        matchingUserUUID = true
-    }
+    let (userUUID, matchingUserUUID) = retrieveUserUUID()
     let context = LAContext()
     var policy: LAPolicy?
     policy = .deviceOwnerAuthenticationWithBiometrics
@@ -27,6 +18,9 @@ func isDeviceSupportedforAuth () -> Bool {
         return false
     }
     if !matchingUserUUID {
+        return false
+    }
+    if !retrieveIsBioAuth() {
         return false
     }
     return true

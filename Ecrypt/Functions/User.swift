@@ -24,7 +24,7 @@ class User {
     var temp: [String] = [""]
     var temp1: String = ""
     
-    init(psword: String, nckname: String, isBioAuthed: Bool) throws {
+    init(psword: String, nckname: String, isBioAuthed: Bool) {
         nickname = nckname
         userUUID = NSUUID().uuidString
         password = SHA512.hash(data: psword.data(using: .utf8)!).description.lowercased()
@@ -34,12 +34,13 @@ class User {
         saveInfo.append(nickname)
         saveInfo.append("|")
         saveInfo.append(password)
-        try FileManager.default.createDirectory(atPath: savePath.path(), withIntermediateDirectories: true, attributes: nil)
+        try! FileManager.default.createDirectory(atPath: savePath.path(), withIntermediateDirectories: true, attributes: nil)
         FileManager.default.createFile(atPath: userSavePath.path(), contents: userUUID.data(using: .utf8))
-        try saveInfo.write(to: userSavePath, atomically: false, encoding: .utf8)
-        try FileManager.default.createDirectory(atPath: savePath.path(), withIntermediateDirectories: true, attributes: nil)
+        try! saveInfo.write(to: userSavePath, atomically: false, encoding: .utf8)
+        try! FileManager.default.createDirectory(atPath: savePath.path(), withIntermediateDirectories: true, attributes: nil)
         FileManager.default.createFile(atPath: userSavePath2.path(), contents: userUUID.data(using: .utf8))
-        try saveInfo.write(to: userSavePath2, atomically: false, encoding: .utf8)
+        try! saveInfo.write(to: userSavePath2, atomically: false, encoding: .utf8)
+        print("another day another slay")
     }
     
     init () throws {

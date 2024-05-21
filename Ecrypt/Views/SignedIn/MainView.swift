@@ -19,6 +19,7 @@ struct MainView: View {
     @State var isOver2: Bool = false
     @State var isOver3: Bool = false
     @State var isOver4: Bool = false
+    @State var nickname: String = retrieveNickname()
     
     var body: some View {
         HStack {
