@@ -32,36 +32,37 @@ func retrieveIsBioAuth () -> Bool {
     }
 }
 
-func retrieveUserUUID () -> (String, Bool) {
+func retrieveUserUUID () -> String {
     let temp1 = try! String(contentsOf: FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!.appending(path:"Ecrypt").appending(path: "U-001.txt"))
-    let temp2 = try! String(contentsOf: FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!.appending(path:"Ecrypt").appending(path: "B-MC2.txt"))
     let temp = temp1.components(separatedBy: "|")
-    let temps = temp2.components(separatedBy: "|")
-    var isMatching = false
-    if temps[0] == temp[0] {
-        isMatching = true
-    } else {
-        isMatching = false
-    }
     let userUUID = temp[0]
-    return (userUUID, isMatching)
+    return userUUID
 }
 
 func updateIsBioAuth (isAuth: Bool) {
     let nickname = retrieveNickname()
     let password = retrievePassword()
+    let userUUID = retrieveUserUUID()
     deleteUserAccount()
-    let user = try! User(psword: password, nckname: nickname, isBioAuthed: isAuth)
+    let user = User(pssword: password, nckname: nickname, isBioAuthed: isAuth, UserUUID: userUUID)
 }
 
 func updateNickname (nickname: String) {
     let isBioAuthed = retrieveIsBioAuth()
     let password = retrievePassword()
+    let userUUID = retrieveUserUUID()
     deleteUserAccount()
-    let user = try! User(psword: password, nckname: nickname, isBioAuthed: isBioAuthed)
+    let user = User(pssword: password, nckname: nickname, isBioAuthed: isBioAuthed, UserUUID: userUUID)
 }
 
 func deleteUserAccount () {
     try! FileManager.default.removeItem(atPath: FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!.appending(path:"Ecrypt").appending(path: "U-001.txt").path())
     try! FileManager.default.removeItem(atPath: FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!.appending(path:"Ecrypt").appending(path: "B-MC2.txt").path())
+}
+
+func favoritesLength () -> Int {
+    let temp = try! String(contentsOf: FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!.appending(path:"Ecrypt").appending(path: "B-MC2.txt"))
+    let temo1 = temp.components(separatedBy: "Ω")
+    let amount = temo1.count
+    return amount
 }

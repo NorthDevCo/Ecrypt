@@ -90,19 +90,19 @@ struct LogInView: View {
                             }
                         }
                         Spacer()
-                        Button(action: {
-                            appState.push(.RegistrationView)
-                        }, label: {
-                            HStack (alignment: .center) {
-                                Text("Forgot password?")
-                                    .onHover(perform: { over in
-                                        overText = over
-                                    })
-                                    .foregroundStyle(.blue)
-                                    .font(.system(size: 12, weight: overText ? .bold : .regular))
-                            }
-                        })
-                        .buttonStyle(.borderless)
+///                        Button(action: {
+   ///      not implemented               appState.push(.RegistrationView)
+      ///      yet    :(                }, label: {
+         ///   I Sad Liam                  HStack (alignment: .center) {
+            ///                    Text("Forgot password?")
+               ///                     .onHover(perform: { over in
+                  ///                      overText = over
+                     ///               })
+                        ///            .foregroundStyle(.blue)
+                           ///         .font(.system(size: 12, weight: overText ? .bold : .regular))
+                            ///}
+                        ///})
+                        ///.buttonStyle(.borderless)
                     }.frame(width: 400, height: 60)
                     HStack {
                         Spacer()

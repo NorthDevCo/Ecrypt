@@ -9,15 +9,11 @@ import Foundation
 import LocalAuthentication
 
 func isDeviceSupportedforAuth () -> Bool {
-    let (userUUID, matchingUserUUID) = retrieveUserUUID()
     let context = LAContext()
     var policy: LAPolicy?
     policy = .deviceOwnerAuthenticationWithBiometrics
     var LAError: NSError?
     guard context.canEvaluatePolicy(policy!, error: &LAError) else {
-        return false
-    }
-    if !matchingUserUUID {
         return false
     }
     if !retrieveIsBioAuth() {

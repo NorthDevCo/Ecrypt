@@ -12,7 +12,7 @@ struct MainView: View {
     @EnvironmentObject private var appState: AppState
     @Environment(\.colorScheme) var colourScheme
     @Namespace private var animation
-    @State var selectedTab: Int = 1
+    @State var selectedTab: Int = 2
     @State var isExpanded: Bool = false
     @State var isOver: Bool = false
     @State var isOver1: Bool = false
@@ -34,23 +34,23 @@ struct MainView: View {
                             .matchedGeometryEffect(id: "logo", in: animation)
                         VStack (alignment: .leading) {
                             
-                            HStack {
-                                Image(systemName: isOver ? "house.fill" : "house")
-                                    .font(.system(size: 18))
-                                    .foregroundStyle(isOver ? .yellow : .primary)
-                                Image(colourScheme == .dark ? "1.light" : "1")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 35)
-
-                            }.padding(.vertical,5)
-                                .matchedGeometryEffect(id: "house", in: animation)
-                                .onTapGesture {
-                                    selectedTab = 1
-                                }
-                                .onHover(perform: { over in
-                                    isOver = over
-                                })
+//                            HStack {
+//                                Image(systemName: isOver ? "house.fill" : "house")
+//                                    .font(.system(size: 18))
+  //                                  .foregroundStyle(isOver ? .yellow : .primary)
+  //                              Image(colourScheme == .dark ? "1.light" : "1")
+    //                                .resizable()
+      //                              .scaledToFit()
+      //                              .frame(width: 35)
+//
+  //                          }.padding(.vertical,5)
+    //                            .matchedGeometryEffect(id: "house", in: animation)
+      //                          .onTapGesture {
+        //                            selectedTab = 1
+          //                      }
+            //                    .onHover(perform: { over in
+              //                      isOver = over
+                //                })
                             
                             HStack {
                                 Image(systemName: isOver2 ? "folder.fill" : "folder")
@@ -119,17 +119,18 @@ struct MainView: View {
                             .frame(width: 50, height: 50)
                             .padding()
                             .matchedGeometryEffect(id: "logo", in: animation)
-                        Image(systemName: selectedTab == 1 ? "house.fill" : "house")
-                            .font(.system(size: 18))
-                            .foregroundStyle(selectedTab == 1 ? .yellow : .primary)
-                            .padding(.bottom,5)
-                            .matchedGeometryEffect(id: "house", in: animation)
-                            .onTapGesture {
-                                selectedTab = 1
-                            }
-                            .onHover(perform: { over in
-                                isOver = over
-                            })
+                        
+//                        Image(systemName: selectedTab == 1 ? "house.fill" : "house")
+  //                          .font(.system(size: 18))
+    //                        .foregroundStyle(selectedTab == 1 ? .yellow : .primary)
+      //                      .padding(.bottom,5)
+        //                    .matchedGeometryEffect(id: "house", in: animation)
+          //                  .onTapGesture {
+            //                    selectedTab = 1
+              //              }
+                //            .onHover(perform: { over in
+                  //              isOver = over
+                    //        })
 
                         Image(systemName: selectedTab == 2 ? "folder.fill" : "folder")
                             .font(.system(size: 18))
@@ -181,7 +182,7 @@ struct MainView: View {
             if selectedTab == 1 {
                 HomeView()
             } else if selectedTab == 2 {
-                FilesView()
+                FilesView() // fix this tomorrow
             } else {
                 SettingsView(nickname: "pp", isOn: true)
             }

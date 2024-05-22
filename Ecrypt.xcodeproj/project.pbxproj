@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A90C93DB2BFD56D600BDEA19 /* retrieveDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90C93DA2BFD56D600BDEA19 /* retrieveDetails.swift */; };
+		A90C93DD2BFE2C2E00BDEA19 /* FileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90C93DC2BFE2C2E00BDEA19 /* FileView.swift */; };
+		A90C93DF2BFE2F4700BDEA19 /* FileDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90C93DE2BFE2F4700BDEA19 /* FileDownloader.swift */; };
 		A9443FC82BDF5CCE000FD9FC /* TermsOfServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9443FC72BDF5CCE000FD9FC /* TermsOfServiceView.swift */; };
 		A98BF1A92BF9CB8B00A415DC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98BF1A82BF9CB8B00A415DC /* User.swift */; };
 		A9AB727B2BFB4CDC00212F0B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AB727A2BFB4CDC00212F0B /* HomeView.swift */; };
@@ -31,6 +33,8 @@
 
 /* Begin PBXFileReference section */
 		A90C93DA2BFD56D600BDEA19 /* retrieveDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = retrieveDetails.swift; sourceTree = "<group>"; };
+		A90C93DC2BFE2C2E00BDEA19 /* FileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileView.swift; sourceTree = "<group>"; };
+		A90C93DE2BFE2F4700BDEA19 /* FileDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownloader.swift; sourceTree = "<group>"; };
 		A9443FC72BDF5CCE000FD9FC /* TermsOfServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceView.swift; sourceTree = "<group>"; };
 		A98BF1A82BF9CB8B00A415DC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A9AB727A2BFB4CDC00212F0B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -118,6 +122,8 @@
 			isa = PBXGroup;
 			children = (
 				A9FA57052BD7E359001EDB0D /* AppState.swift */,
+				A90C93DE2BFE2F4700BDEA19 /* FileDownloader.swift */,
+				A90C93DC2BFE2C2E00BDEA19 /* FileView.swift */,
 				A98BF1A82BF9CB8B00A415DC /* User.swift */,
 				A9FA57062BD7E359001EDB0D /* InputView.swift */,
 				A9FA57072BD7E359001EDB0D /* PasswordAuthenticate.swift */,
@@ -229,6 +235,7 @@
 				A9FA57152BD7E364001EDB0D /* MainView.swift in Sources */,
 				A98BF1A92BF9CB8B00A415DC /* User.swift in Sources */,
 				A9AB727D2BFB588500212F0B /* SettingsView.swift in Sources */,
+				A90C93DD2BFE2C2E00BDEA19 /* FileView.swift in Sources */,
 				A9FA57142BD7E364001EDB0D /* LogInView.swift in Sources */,
 				A9FA57162BD7E364001EDB0D /* SignUpView.swift in Sources */,
 				A9443FC82BDF5CCE000FD9FC /* TermsOfServiceView.swift in Sources */,
@@ -236,6 +243,7 @@
 				A9AB72812BFB589D00212F0B /* FilesView.swift in Sources */,
 				A9FA57132BD7E364001EDB0D /* ContentView.swift in Sources */,
 				A9AB727B2BFB4CDC00212F0B /* HomeView.swift in Sources */,
+				A90C93DF2BFE2F4700BDEA19 /* FileDownloader.swift in Sources */,
 				A9FA56F72BD7E312001EDB0D /* EcryptApp.swift in Sources */,
 				A9FA57212BDA5D31001EDB0D /* PasswordPermutations.swift in Sources */,
 				A9FA570A2BD7E359001EDB0D /* AppState.swift in Sources */,

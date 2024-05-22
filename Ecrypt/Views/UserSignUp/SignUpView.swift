@@ -21,6 +21,7 @@ struct RegistrationView: View {
     var body: some View {
         VStack {
             HStack {
+                // Title Bar
                 Text("Ecrypt")
                     .font(.system(size: 25, weight: .medium, design: Font.Design.serif))
                 
@@ -31,48 +32,78 @@ struct RegistrationView: View {
                     .scaledToFit()
                     .frame(width: 40, height: 40)
             }.padding(.horizontal)
+            
             Spacer()
+            
+            // User Sign up Form
             if progress >= 3 {
+                // Welcome screen before user enters application but form details aren't submitted until user presses continue
                 ProgressBar(progress: progress)
+                
                 Spacer()
+                
                 Text("Welcome to Ecrypt")
                     .font(.system(size: 50, weight: .medium, design: Font.Design.serif))
+                
                 Spacer()
+                
+                // Continue Button
                 Button(action: {
-                    generateUser()
-                    appState.clear(.MainView)
+                    
+                    generateUser()  // save user info
+                    appState.clear(.MainView) // Transfer to main view
+                    
                 }, label: {
+                    
                     HStack {
                         Spacer(minLength: 87.5)
+                        
                         Text("Continue")
                             .font(.title)
                             .fontWeight(.semibold)
                             .foregroundStyle(.white)
+                        
                         Spacer()
+                        
                         Image(systemName: "arrow.forward")
                             .font(.title)
                             .fontWeight(.bold)
                             .foregroundStyle(.white)
+                        
                     }
                 }).buttonStyle(.borderless)
                     .padding()
                     .frame(width: 300, height: 50)
                     .background(RoundedRectangle(cornerRadius: 10).fill(.blue).frame(width: 300, height: 50))
+                
                 Spacer()
+                
+                
             } else if progress == 2 {
+                // User to assign themself a nickname
+                
                 ProgressBar(progress: progress)
+                
                 Spacer()
+                
                 Text ("Please give us a nickname to call you!")
                     .font(.system(size: 25, weight: .medium, design: Font.Design.serif))
+                
                 Spacer()
+                
+                // Text field for user to input their username
                 inputView(text: $nickname, placeholder: "Required", title: "Enter a Nickname", imageName: "person").onSubmit {
                     if nickname.isEmpty == false {
                         progress = 3
                     }
                 }
+                
                 Spacer()
+                
                 HStack {
                     Spacer()
+                    
+                    // Back Button
                     Button(action: {
                             progress = 1
                     }, label: {
@@ -81,17 +112,22 @@ struct RegistrationView: View {
                                 .font(.title)
                                 .fontWeight(.bold)
                                 .foregroundStyle(.white)
+                            
                             Spacer()
+                            
                             Text("Back")
                                 .font(.title)
                                 .fontWeight(.semibold)
                                 .foregroundStyle(.white)
+                            
                             Spacer()
                         }
                     }).buttonStyle(.borderless)
                         .padding()
                         .frame(width: 200, height: 50)
                         .background(RoundedRectangle(cornerRadius: 10).fill(.blue).frame(width: 200, height: 50))
+                    
+                    // Continue Button
                     Button(action: {
                         if nickname.isEmpty == false {
                             progress = 3
@@ -99,11 +135,14 @@ struct RegistrationView: View {
                     }, label: {
                         HStack {
                             Spacer()
+                            
                             Text("Continue")
                                 .font(.title)
                                 .fontWeight(.semibold)
                                 .foregroundStyle(.white)
+                            
                             Spacer()
+                            
                             Image(systemName: "arrow.forward")
                                 .font(.title)
                                 .fontWeight(.bold)
@@ -113,11 +152,15 @@ struct RegistrationView: View {
                         .padding()
                         .frame(width: 200, height: 50)
                         .background(RoundedRectangle(cornerRadius: 10).fill(.blue).frame(width: 200, height: 50))
+                    
                     Spacer()
                 }
             } else if progress == 1 {
+                // Does user consent to use of biometrics??
                 ProgressBar(progress: progress)
+                
                 Spacer()
+                
                 VStack {
                     Text("Do you consent to using Biometrics to sign in?")
                         .font(.system(size: 25, weight: .medium, design: Font.Design.serif))
@@ -130,9 +173,13 @@ struct RegistrationView: View {
                         Text("  I agree to use Biometrics to sign in")
                     }).padding()
                 }
+                
                 Spacer()
+                
                 HStack {
                     Spacer()
+                    
+                    // Back Button
                     Button(action: {
                             progress = 0
                     }, label: {
@@ -152,6 +199,8 @@ struct RegistrationView: View {
                         .padding()
                         .frame(width: 200, height: 50)
                         .background(RoundedRectangle(cornerRadius: 10).fill(.blue).frame(width: 200, height: 50))
+                    
+                    // Continue Button
                     Button(action: {
                             progress = 2
                     }, label: {
@@ -171,20 +220,26 @@ struct RegistrationView: View {
                         .padding()
                         .frame(width: 200, height: 50)
                         .background(RoundedRectangle(cornerRadius: 10).fill(.blue).frame(width: 200, height: 50))
+                    
                     Spacer()
                 }
                 Spacer()
             } else {
+                // Create a password for the user :D
                 VStack (alignment: .leading, content: {
                     Text("Getting Started")
                         .font(.system(size: 25, weight: .bold))
+                    
                     Text("Let's jump in")
                         .font(.system(size: 15))
                         .foregroundStyle(.gray)
                     
                     ProgressBar(progress: progress)
+                    
                     Spacer()
+                    
                     HStack {
+                        // Password Field 1
                         inputView(text: $password, placeholder: "Enter a password", title: "Create a Password", imageName: "", isSecureField: secureField)
                             .padding(.bottom, 6)
                             .overlay(alignment: .trailing) {
@@ -201,28 +256,46 @@ struct RegistrationView: View {
                                     .padding(.top, 13)
                                     .padding(.trailing, 10)
                             }
+                        
+                        // apprears is password meets requirements
+                        Image(systemName: "checkmark")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundStyle(passwordTesting(password) && !password.isEmpty ? .green : .clear)
+                            .padding(.top, 9)
+                        
                     }.padding(.top, 10)
+                    
+                    // Password strength Indicator
                     HStack {
                         Text("Weak")
+                        
                         ZStack (alignment: .leading) {
+                            // Background rectangle to show rough percentage of strength
                             RoundedRectangle(cornerRadius: 25.0)
                                 .frame(width: 300, height: 10)
                                 .foregroundStyle(Color(NSColor(white: 0.4, alpha: 0.2)))
+                            
+                            // Foreground rectange to show where the strength of psw lays compaired to standards
                             RoundedRectangle(cornerRadius: 25.0)
                                 .frame(width: CGFloat(passwordStrength(password)*60), height: 10)
                                 .foregroundStyle(LinearGradient(colors: [.purple, .blue], startPoint: .leading, endPoint: .trailing))
                         }
                         Text("Strong")
                     }
+                    // Password requirements
                     Text("Password must have: 2 Numbers, 2 Capitals and 1 Special Character")
                         .font(.subheadline)
                         .fontWeight(.light)
+                    
                     Text("Password must be at least 10 characters")
                         .font(.subheadline)
                         .fontWeight(.light)
+                    
                     Spacer()
                     
                     HStack {
+                        // Second password input field
                         inputView(text: $password1, placeholder: "Enter a password", title: "Create a Password", imageName: "", isSecureField: secureField)
                             .padding(.bottom, 6)
                             .overlay(alignment: .trailing) {
@@ -239,10 +312,12 @@ struct RegistrationView: View {
                                     .padding(.top, 13)
                                     .padding(.trailing, 10)
                             }
+                        
+                        // To show if passwords match
                         Image(systemName: "checkmark")
                             .font(.title2)
                             .fontWeight(.bold)
-                            .foregroundStyle(password == password1 && password1.isEmpty == false ? .green : .clear)
+                            .foregroundStyle(password == password1 && !password1.isEmpty ? .green : .clear)
                             .padding(.top, 9)
                     }.padding(.top, 10)
                     Spacer()
@@ -255,7 +330,7 @@ struct RegistrationView: View {
                         Spacer()
                         VStack {
                             Button(action: {
-                                if passwordTesting(password, password1) && isOn {
+                                if passwordTesting(password) && password == password1 && isOn {
                                     progress = 1
                                 }
                             }, label: {
@@ -264,17 +339,17 @@ struct RegistrationView: View {
                                     Text("Continue")
                                         .font(.title)
                                         .fontWeight(.semibold)
-                                        .foregroundStyle(passwordTesting(password, password1) && isOn ? .white : .gray)
+                                        .foregroundStyle(passwordTesting(password) && password == password1 && isOn ? .white : .gray)
                                     Spacer()
                                     Image(systemName: "arrow.forward")
                                         .font(.title)
                                         .fontWeight(.bold)
-                                        .foregroundStyle(passwordTesting(password, password1) && isOn ? .white : .clear)
+                                        .foregroundStyle(passwordTesting(password) && password == password1 && isOn ? .white : .clear)
                                 }
                             }).buttonStyle(.borderless)
                                 .padding()
                                 .frame(width: 300, height: 50)
-                                .background(RoundedRectangle(cornerRadius: 10).fill(passwordTesting(password, password1) && isOn ? .blue : .clear).stroke(passwordTesting(password, password1) && isOn ? .blue : .gray, lineWidth: 3).frame(width: 300, height: 50))
+                                .background(RoundedRectangle(cornerRadius: 10).fill(passwordTesting(password) && password == password1 && isOn ? .blue : .clear).stroke(passwordTesting(password) && password == password1 && isOn ? .blue : .gray, lineWidth: 3).frame(width: 300, height: 50))
                         }.padding(.top)
                         Spacer()
                     }
@@ -334,16 +409,13 @@ struct RegistrationView: View {
     return strength
     }
 
-    private func passwordTesting (_ Password: String, _ Password1: String) -> Bool {
+    private func passwordTesting (_ Password: String) -> Bool {
     let specials = "!@#$%^&*()_-+={[}]|:;<,>'.?/~`"
     let capitals = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     let lowercase = "abcdefghijklmnopqrstuvwxyz"
     let numbers = "1234567890"
     var isValid = true
     var count = 0
-    if Password != Password1 {
-        isValid = false
-    }
     if Password.count < 10 {
         isValid = false
     }
@@ -386,12 +458,7 @@ struct RegistrationView: View {
     }
     
     private func generateUser() {
-        do {
-            let user = try User(psword: password, nckname: nickname, isBioAuthed: isSelected)
-            print(isSelected)
-        } catch {
-            print(error.localizedDescription)
-        }
+        let user = User(psword: password, nckname: nickname, isBioAuthed: isSelected)
     }
 
 }

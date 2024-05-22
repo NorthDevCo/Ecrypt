@@ -16,9 +16,11 @@ struct SettingsView: View {
     var body: some View {
         VStack (alignment: .leading) {
             HStack {
-                Text("Fingerprint autherisation is currently approved: \(isOn ? "False" : "True")")
+                Text("Fingerprint autherisation is currently approved: \(isOn ? "True" : "False")")
                 Button(action: {
                     isOn.toggle()
+                    print("poope \(isOn)")
+                    print(retrieveIsBioAuth())
                     updateIsBioAuth(isAuth: isOn)
                 }, label: {
                     Text("Change")
