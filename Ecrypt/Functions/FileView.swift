@@ -23,7 +23,7 @@ struct FileView: View {
             Spacer()
             
             Button(action: {
-                FileDownloader()
+            //    FileDownloader()
             }, label: {
                 Image(systemName: "tray.and.arrow.down.fill")
                     .font(.title3)
@@ -34,7 +34,7 @@ struct FileView: View {
                 })
             
             Button(action: {
-                FileDownloader()
+                
             }, label: {
                 Image(systemName: "trash")
                     .font(.title3)
@@ -50,5 +50,5 @@ struct FileView: View {
 }
 
 #Preview {
-    FileView(filePath: "gay", fileName: "U-001.txt")
+    FileView(filePath: FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!.appending(path:"Ecrypt").path(), fileName: "U-001.txt")
 }

@@ -182,7 +182,7 @@ struct MainView: View {
             if selectedTab == 1 {
                 HomeView()
             } else if selectedTab == 2 {
-                FilesView() // fix this tomorrow
+                FilesView()
             } else {
                 SettingsView(nickname: "pp", isOn: true)
             }

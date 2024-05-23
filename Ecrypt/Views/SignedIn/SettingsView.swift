@@ -19,13 +19,21 @@ struct SettingsView: View {
                 Text("Fingerprint autherisation is currently approved: \(isOn ? "True" : "False")")
                 Button(action: {
                     isOn.toggle()
-                    print("poope \(isOn)")
-                    print(retrieveIsBioAuth())
                     updateIsBioAuth(isAuth: isOn)
                 }, label: {
                     Text("Change")
                 })
             }
+            
+            HStack {
+                Text("Delete User Account")
+                Button(action: {
+                    deleteUserAccount()
+                }, label: {
+                    Text("Delete")
+                })
+            }
+            
         }
     }
 }

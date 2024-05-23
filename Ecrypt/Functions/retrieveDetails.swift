@@ -56,8 +56,7 @@ func updateNickname (nickname: String) {
 }
 
 func deleteUserAccount () {
-    try! FileManager.default.removeItem(atPath: FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!.appending(path:"Ecrypt").appending(path: "U-001.txt").path())
-    try! FileManager.default.removeItem(atPath: FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!.appending(path:"Ecrypt").appending(path: "B-MC2.txt").path())
+    try! FileManager.default.removeItem(atPath: FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!.appending(path:"Ecrypt").path())
 }
 
 func favoritesLength () -> Int {
