@@ -13,9 +13,5 @@ struct EcryptApp: App {
         WindowGroup {
             ContentView().environmentObject(AppState())
         }.windowStyle(HiddenTitleBarWindowStyle())
-        
-        Window("Terms of Service", id: "ToS") {
-            TermsOfServiceView()
-        }
     }
 }

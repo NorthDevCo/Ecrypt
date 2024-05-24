@@ -9,7 +9,8 @@ import SwiftUI
 
 struct FileView: View {
     
-    @State var filePath: String
+    @EnvironmentObject private var appState: AppState
+    @State var filePath: URL
     @State var fileName: String
     @State var isOver: Bool = false
     @State var isOver2: Bool = false
@@ -23,7 +24,7 @@ struct FileView: View {
             Spacer()
             
             Button(action: {
-            //    FileDownloader()
+                FileDownloader(file: fileName, SavePath: filePath)
             }, label: {
                 Image(systemName: "tray.and.arrow.down.fill")
                     .font(.title3)
@@ -34,7 +35,7 @@ struct FileView: View {
                 })
             
             Button(action: {
-                
+                FileDeleter(file: fileName, appState: appState)
             }, label: {
                 Image(systemName: "trash")
                     .font(.title3)
@@ -50,5 +51,5 @@ struct FileView: View {
 }
 
 #Preview {
-    FileView(filePath: FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!.appending(path:"Ecrypt").path(), fileName: "U-001.txt")
+    FileView(filePath: FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!.appending(path:"Ecrypt"), fileName: "U-001.txt")
 }

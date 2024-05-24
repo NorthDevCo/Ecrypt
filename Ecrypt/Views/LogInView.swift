@@ -16,7 +16,6 @@ struct LogInView: View {
     @State private var overText1: Bool = false
     @State private var overText2: Bool = false
     @State var isMatchingUUID: Bool = false
-    @Environment(\.openWindow) private var openWindow
     
     var body: some View {
         VStack {
@@ -111,7 +110,7 @@ struct LogInView: View {
                                 overText1 = over
                             })
                             .foregroundStyle(overText1 ? .blue : .primary)
-                            .onTapGesture { openWindow(id: "ToS") }
+                            .onTapGesture { NSWorkspace.shared.open(URL(string: "https://github.com/NorthDevCo/Ecrypt/blob/984b0cf47a79502c9e1db3bde1c658503a292bfc/Ecrypt%20Terms%20of%20Service.pdf")!) }
                         RoundedRectangle(cornerRadius: 10)
                             .frame(width: 2, height: 15)
                             .foregroundStyle(.gray)

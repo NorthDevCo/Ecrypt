@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FilesView: View {
     
-    @State var filePaths: URL = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!.appending(path:"Ecrypt")
+    @State var filePaths: URL = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!.appending(path:"Ecrypt").appending(path: "Files")
     @State var filesList: [String] = try! String(contentsOf: FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!.appending(path:"Ecrypt").appending(path: "B-MC2.txt")).components(separatedBy: "|")
     @State var num: String = ""
     let nickname: String = retrieveNickname()
@@ -25,8 +25,7 @@ struct FilesView: View {
             
             ScrollView {
                 ForEach(0..<filesList.count) { word in
-                    FileView(filePath: filePaths.appending(path: filesList[word]).path(), fileName: filesList[word]).onAppear(perform: {
-                        print(filesList[word])
+                    FileView(filePath: filePaths.appending(path: filesList[word]), fileName: filesList[word]).onAppear(perform: {
                     })
                 }
             }.padding()

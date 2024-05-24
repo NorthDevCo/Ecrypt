@@ -480,7 +480,7 @@ struct BottomToolbarView: View {
                         overText1 = over
                     })
                     .foregroundStyle(overText1 ? .blue : .primary)
-                    .onTapGesture { openWindow(id: "ToS") }
+                    .onTapGesture { NSWorkspace.shared.open(URL(string: "https://github.com/NorthDevCo/Ecrypt/blob/984b0cf47a79502c9e1db3bde1c658503a292bfc/Ecrypt%20Terms%20of%20Service.pdf")!) }
                 RoundedRectangle(cornerRadius: 10)
                     .frame(width: 2, height: 15)
                     .foregroundStyle(.gray)
@@ -495,7 +495,7 @@ struct BottomToolbarView: View {
                 Text(" Terms of Service")
                     .onHover(perform: { over in overText1 = over })
                     .foregroundStyle(overText1 ? .blue : .primary)
-                    .onTapGesture { openWindow(id: "ToS") }
+                    .onTapGesture { NSWorkspace.shared.open(URL(string: "https://github.com/NorthDevCo/Ecrypt/blob/984b0cf47a79502c9e1db3bde1c658503a292bfc/Ecrypt%20Terms%20of%20Service.pdf")!) }
             }
         }.padding()
     }

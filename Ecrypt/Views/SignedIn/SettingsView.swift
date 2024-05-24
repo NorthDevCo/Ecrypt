@@ -34,6 +34,12 @@ struct SettingsView: View {
                 })
             }
             
+            Button(action: {
+                NSWorkspace.shared.open(URL(string: "https://github.com/NorthDevCo/Ecrypt/blob/984b0cf47a79502c9e1db3bde1c658503a292bfc/Ecrypt%20Terms%20of%20Service.pdf")!)
+            }, label: {
+                Text("Read Terms of Service")
+            })
+            
         }
     }
 }
