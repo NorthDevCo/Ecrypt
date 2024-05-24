@@ -21,6 +21,21 @@ struct FilesView: View {
                 Text("\(String(data: wave, encoding: .utf8)!) Welcome to Ecrypt \(nickname)!")
                     .font(.system(size: 30, design: .serif))
                 Spacer()
+                Button(action: {
+                    
+                }, label: {
+                    HStack {
+                        Spacer()
+                        Text("Upload files")
+                            .font(.title)
+                            .fontWeight(.semibold)
+                            .foregroundStyle(.white)
+                        Spacer()
+                    }
+                }).buttonStyle(.borderless)
+                    .padding()
+                    .frame(width: 300, height: 50)
+                    .background(RoundedRectangle(cornerRadius: 10).fill(.blue).frame(width: 200, height: 50))
             }.padding(.bottom)
             
             ScrollView {
