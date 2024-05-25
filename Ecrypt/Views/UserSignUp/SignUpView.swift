@@ -475,7 +475,7 @@ struct BottomToolbarView: View {
         HStack {
             if progress < 1 {
                 Spacer()
-                Text(" Terms of Service")
+                Text("Terms of Service")
                     .onHover(perform: { over in
                         overText1 = over
                     })
@@ -490,12 +490,31 @@ struct BottomToolbarView: View {
                     })
                     .foregroundStyle(overText ? .blue : .primary)
                     .onTapGesture { appState.clear(.LogInView) }
+                RoundedRectangle(cornerRadius: 10)
+                    .frame(width: 2, height: 15)
+                    .foregroundStyle(.gray)
+                Text("Help")
+                    .foregroundStyle(overText ? .blue : .primary)
+                    .onTapGesture { NSWorkspace.shared.open(URL(string: "https://github.com/NorthDevCo/Ecrypt/blob/8edc87ea9689f0b2f31ffed8636a116f6f11fc73/HELP.pdf")!) }
                 Spacer()
             } else {
-                Text(" Terms of Service")
-                    .onHover(perform: { over in overText1 = over })
+                Spacer()
+                Text("Terms of Service")
+                    .onHover(perform: { over in
+                        overText1 = over
+                    })
                     .foregroundStyle(overText1 ? .blue : .primary)
                     .onTapGesture { NSWorkspace.shared.open(URL(string: "https://github.com/NorthDevCo/Ecrypt/blob/984b0cf47a79502c9e1db3bde1c658503a292bfc/Ecrypt%20Terms%20of%20Service.pdf")!) }
+                RoundedRectangle(cornerRadius: 10)
+                    .frame(width: 2, height: 15)
+                    .foregroundStyle(.gray)
+                Text("Help")
+                    .foregroundStyle(overText ? .blue : .primary)
+                    .onHover(perform: { over in
+                        overText = over
+                    })
+                    .onTapGesture { NSWorkspace.shared.open(URL(string: "https://github.com/NorthDevCo/Ecrypt/blob/8edc87ea9689f0b2f31ffed8636a116f6f11fc73/HELP.pdf")!) }
+                Spacer()
             }
         }.padding()
     }
