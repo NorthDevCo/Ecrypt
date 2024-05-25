@@ -74,6 +74,19 @@ struct MainView: View {
                             Spacer()
                             
                             HStack {
+                                Image(systemName: "questionmark")
+                                    .font(.system(size: 18))
+                                    .padding(.horizontal,5)
+                                Text("Help")
+                                    .fontWeight(.bold)
+
+                            }.padding(.vertical,5)
+                                .matchedGeometryEffect(id: "help", in: animation)
+                                .onTapGesture {
+                                    NSWorkspace.shared.open(URL(string: "https://github.com/NorthDevCo/Ecrypt/blob/8edc87ea9689f0b2f31ffed8636a116f6f11fc73/HELP.pdf")!)
+                                }
+                            
+                            HStack {
                                 Image(systemName: isOver4 ? "gearshape.fill" : "gearshape")
                                     .font(.system(size: 18))
                                 Image(colourScheme == .dark ? "3.light" : "3")
@@ -120,17 +133,6 @@ struct MainView: View {
                             .padding()
                             .matchedGeometryEffect(id: "logo", in: animation)
                         
-//                        Image(systemName: selectedTab == 1 ? "house.fill" : "house")
-  //                          .font(.system(size: 18))
-    //                        .foregroundStyle(selectedTab == 1 ? .yellow : .primary)
-      //                      .padding(.bottom,5)
-        //                    .matchedGeometryEffect(id: "house", in: animation)
-          //                  .onTapGesture {
-            //                    selectedTab = 1
-              //              }
-                //            .onHover(perform: { over in
-                  //              isOver = over
-                    //        })
 
                         Image(systemName: selectedTab == 2 ? "folder.fill" : "folder")
                             .font(.system(size: 18))
@@ -146,11 +148,22 @@ struct MainView: View {
                             })
                             
                                                     
-                            Spacer()
+                        Spacer()
+                        
+                        Image(systemName: "questionmark")
+                            .font(.system(size: 18))
+                            .padding(.vertical,5)
+                            .matchedGeometryEffect(id: "help", in: animation)
+                            .onTapGesture {
+                                selectedTab = 4
+                            }
+                            .onHover(perform: { over in
+                                isOver4 = over
+                            })
                             
                         Image(systemName:  selectedTab == 4 ? "gearshape.fill" : "gearshape")
                             .font(.system(size: 18))
-                            .padding(.vertical,5)
+                            .padding(.vertical)
                             .matchedGeometryEffect(id: "gear", in: animation)
                             .onTapGesture {
                                 selectedTab = 4
