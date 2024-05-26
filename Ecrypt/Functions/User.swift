@@ -42,7 +42,7 @@ class User {
         FileManager.default.createFile(atPath: userSavePath2.path(), contents: " ".data(using: .utf8))
     }
     
-    init(pssword: String, nckname: String, isBioAuthed: Bool, UserUUID: String) {
+    init(pssword: String, nckname: String, isBioAuthed: Bool, UserUUID: String, files: String) {
         password = pssword
         userUUID = UserUUID
         nickname = nckname
@@ -55,7 +55,7 @@ class User {
         try! FileManager.default.createDirectory(atPath: savePath.path(), withIntermediateDirectories: true, attributes: nil)
         FileManager.default.createFile(atPath: userSavePath.path(), contents: userUUID.data(using: .utf8))
         try! saveInfo.write(to: userSavePath, atomically: false, encoding: .utf8)
-        FileManager.default.createFile(atPath: userSavePath2.path(), contents: " ".data(using: .utf8))
+        FileManager.default.createFile(atPath: userSavePath2.path(), contents: files.data(using: .utf8))
     }
     
     init () throws {

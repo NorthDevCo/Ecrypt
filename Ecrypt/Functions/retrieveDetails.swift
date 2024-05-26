@@ -39,20 +39,27 @@ func retrieveUserUUID () -> String {
     return userUUID
 }
 
+func retrieveFiles () -> String {
+    let temp1 = try! String(contentsOf: FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!.appending(path:"Ecrypt").appending(path: "B-MC2.txt"))
+    return temp1
+}
+
 func updateIsBioAuth (isAuth: Bool) {
     let nickname = retrieveNickname()
     let password = retrievePassword()
     let userUUID = retrieveUserUUID()
+    let files = retrieveFiles()
     deleteUserAccount()
-    let user = User(pssword: password, nckname: nickname, isBioAuthed: isAuth, UserUUID: userUUID)
+    let user = User(pssword: password, nckname: nickname, isBioAuthed: isAuth, UserUUID: userUUID, files: files)
 }
 
 func updateNickname (nickname: String) {
     let isBioAuthed = retrieveIsBioAuth()
     let password = retrievePassword()
     let userUUID = retrieveUserUUID()
+    let files = retrieveFiles()
     deleteUserAccount()
-    let user = User(pssword: password, nckname: nickname, isBioAuthed: isBioAuthed, UserUUID: userUUID)
+    let user = User(pssword: password, nckname: nickname, isBioAuthed: isBioAuthed, UserUUID: userUUID, files: files)
 }
 
 func deleteUserAccount () {
